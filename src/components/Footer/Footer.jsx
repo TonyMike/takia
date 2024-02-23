@@ -16,6 +16,7 @@ const Footer = () => {
               <a href='#'>Login/Register</a>
               <a href='#'>Cart</a>
               <a href='#'>Wishlist</a>
+              
               <a href='#'>Shop</a>
           </div>
       </div>
