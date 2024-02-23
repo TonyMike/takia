@@ -5,26 +5,26 @@ const UserSchema = new Schema(
   {
     firstName: {
       type: String,
-      required: true
     },
     lastName: {
       type: String,
-      required: true
     },
     password: {
+      type: String,
+    },
+    googleId: {
       type: String,
     },
     email: {
       type: String,
       required: true
     },
-    phoneNumber: String,
-    socialLink: [
-      {
-        social: String,
-        link: String
-      }
-    ],
+    image: {
+      type: String,
+    },
+    phoneNumber: {
+      type: String,
+    },
     state: {
       type: String
     },
@@ -34,6 +34,11 @@ const UserSchema = new Schema(
     profile_picture: {
       type: String
     },
+    isAdmin: {
+      type: Boolean,
+      default: false
+    },
+
   },
   { timestamps: true }
 )

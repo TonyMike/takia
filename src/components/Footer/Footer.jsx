@@ -19,6 +19,7 @@ const Footer = () => {
               
               <a href='#'>Shop</a>
           </div>
+
       </div>
 
         <div className="flex">
@@ -43,6 +44,7 @@ const Footer = () => {
           <div className="text-2xl font-bold pb-4">
             <p>Download App</p>
           </div>
+
 
           <div className="flex flex-col space-y-2">
             <p>Save $3 with App New User Only</p>
@@ -71,6 +73,7 @@ const Footer = () => {
                   <FaInstagram />
                   <FaLinkedinIn />
                 </div>
+
               </div>
             </div>
           </div>
