@@ -5,11 +5,9 @@ const UserSchema = new Schema(
   {
     firstName: {
       type: String,
-      required: true
     },
     lastName: {
       type: String,
-      required: true
     },
     password: {
       type: String,
@@ -17,6 +15,9 @@ const UserSchema = new Schema(
     email: {
       type: String,
       required: true
+    },
+    images: {
+      type: String,
     },
     phoneNumber: String,
     socialLink: [
