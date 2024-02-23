@@ -29,12 +29,17 @@ export const registerUser = async (formData) => {
 }
 
 export const loginUser = async (formData) => {
-  const { username, password } = Object.fromEntries(formData)
+  const { email, password } = Object.fromEntries(formData)
   try {
-    const user = await User.findOne({ username })
+    await signIn('credentials', { email, password })
+    console.log('username and password from actions loginUser', username, password)
+    return { success: 'login  successful ' }
 
   } catch (error) {
-
+    if (error.message.includes('CredentialsSignin')) {
+      return { error: 'Invalid username or password' }
+    }
+    throw error
   }
 }
 
@@ -42,5 +47,7 @@ export const handleGoogleLogin = async () => {
   await signIn("google")
 }
 export const handleLogout = async () => {
-  await signOut({ redirectTo: 'http://localhost:3000/login' })
+  // await signOut({ redirectTo: 'http://localhost:3000/login' })
+  await signOut()
+
 }

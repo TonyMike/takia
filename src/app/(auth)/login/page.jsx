@@ -1,10 +1,8 @@
 
 
 import { handleGoogleLogin, loginUser } from "../../../lib/actions";
-import { auth, signIn } from "../../../lib/auth";
 
 const Login = async () => {
-
   return (
     <div className="bg-gray-100 flex justify-center items-center w-screen min-h-screen">
       <div>

@@ -12,20 +12,19 @@ const UserSchema = new Schema(
     password: {
       type: String,
     },
+    googleId: {
+      type: String,
+    },
     email: {
       type: String,
       required: true
     },
-    images: {
+    image: {
       type: String,
     },
-    phoneNumber: String,
-    socialLink: [
-      {
-        social: String,
-        link: String
-      }
-    ],
+    phoneNumber: {
+      type: String,
+    },
     state: {
       type: String
     },
@@ -35,6 +34,11 @@ const UserSchema = new Schema(
     profile_picture: {
       type: String
     },
+    isAdmin: {
+      type: Boolean,
+      default: false
+    },
+
   },
   { timestamps: true }
 )
