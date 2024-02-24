@@ -4,7 +4,7 @@ import { auth } from "../../lib/auth";
 const Dashboard = async () => {
   console.log(auth()?.user)
   return (
-    <div className="bg-gray-100 flex justify-center items-center w-screen min-h-screen">
+    <div className="">
       <h1>Dashboard</h1>
       <form action={handleLogout}>
         <button >logout</button>
