@@ -1,8 +1,5 @@
-import { FaApple } from "react-icons/fa";
-import { IoLogoGooglePlaystore } from "react-icons/io5";
 import { FaFacebookF } from "react-icons/fa";
 import { CiTwitter } from "react-icons/ci";
-import { FaInstagram } from "react-icons/fa";
 import { FaLinkedinIn } from "react-icons/fa6";
 
 const Footer = () => {
