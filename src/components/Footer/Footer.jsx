@@ -1,6 +1,9 @@
+
 import { FaFacebookF } from "react-icons/fa";
 import { CiTwitter } from "react-icons/ci";
+
 import { FaLinkedinIn } from "react-icons/fa6";
+import { IoLogoGooglePlaystore } from "react-icons/io5";
 
 const Footer = () => {
   return (
@@ -25,6 +28,7 @@ const Footer = () => {
           <a href="#">
             <FaFacebookF />
           </a>
+
         </div>
       </div>
       Lorem ipsum dolor sit amet consectetur, adipisicing elit. Molestiae
