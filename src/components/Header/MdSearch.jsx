@@ -10,14 +10,14 @@ const MdSearch = () => {
   return (
     <div className="md:hidden ">
       <div className="rounded-full cursor-pointer border border-gray-200 px-3 py-3" onClick={() => setOpen(true)}>
-        <GoSearch size={20} />
+        <GoSearch  />
       </div>
 
       {
         open && (
           <div className="absolute top-0 h-[72px] w-screen justify-center bg-white border-b border-gray-200 z-10 left-0 flex space-x-3 px-3 items-center">
             <Search />
-            <div className="rounded-full cursor-pointer border border-gray-200 px-3 py-3" onClick={() => setOpen(false)} >
+            <div className="rounded-full cursor-pointer border border-gray-200 px-3 py-3" onClick={()=>setOpen(false)} >
               <IoMdClose size={16} />
             </div>
           </div>
