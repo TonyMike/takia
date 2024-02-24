@@ -1,4 +1,5 @@
 
+import Footer from "../components/Footer/Footer";
 import Header from "../components/Header/Header";
 import "./globals.css";
 
@@ -16,7 +17,7 @@ export default function RootLayout({ children }) {
           <div className="px-10 md:px-16 lg:px-28 py-10">
             {children}
           </div>
-          <h2 className="h-10 bg-black text-white">Footer</h2>
+          <Footer />
         </div>
       </body>
     </html>
