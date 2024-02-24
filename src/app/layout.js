@@ -17,7 +17,6 @@ export default function RootLayout({ children }) {
             {children}
           </div>
           <h2 className="h-10 bg-black text-white">Footer</h2>
-          {/* <Footer /> */}
         </div>
       </body>
     </html>

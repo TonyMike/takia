@@ -1,25 +1,33 @@
 // "use client"
 
 
-import { usePathname } from "next/navigation";
+import Link from "next/link";
 import { auth } from "../../lib/auth";
 import TkLink from "../TkLink";
+import MenuDropDown from "./MenuDropDown";
 
 
 
 const Header = () => {
   const session = auth()
-  console.log(session)
+  // console.log(session)
   return (
-    <div className="flex justify-between items-center h-20 px-5 md:px-20 bg-white border-b border-gray-200">
+    <header className="flex justify-between items-center h-20 px-5 md:px-20 bg-white border-b border-gray-200">
       {/* logo */}
-      <p>Takia</p>
+      <Link href={'/'}>Takia</Link>
       <div>icon</div>
-      <div className="flex gap-x-5">
-        <TkLink href='/login' title='Log in' mode='light' />
-        <TkLink href='/register' title='Sign up' mode='dark' />
-      </div>
-    </div>
+      <nav className="flex gap-x-5">
+        {
+          session?.user && (
+            <>
+              <TkLink href='/login' title='Log in' mode='light' />
+              <TkLink href='/register' title='Sign up' mode='dark' />
+            </>
+          )
+        }
+        <MenuDropDown />
+      </nav>
+    </header>
   );
 }
 
