@@ -27,10 +27,13 @@ const MenuDropDown = () => {
                 <li>My Profile</li>
                 <li>Messages</li>
               </ul>
-              {/* <button onClick={() => handleLogout()} className="px-4 flex items-center gap-x-2 text-sm font-bold">
-                <BiLogOutCircle size={18} />
-                <span>Logout</span>
-              </button> */}
+              <form action={handleLogout}>
+                <button className="px-4 flex items-center gap-x-2 text-sm font-bold">
+                  <BiLogOutCircle size={18} />
+                  <span>Logout</span>
+                </button>
+              </form>
+
             </div>
           )
         }

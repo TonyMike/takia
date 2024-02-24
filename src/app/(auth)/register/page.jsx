@@ -1,3 +1,4 @@
+"use server"
 import { registerUser } from "../../../lib/actions";
 
 const Register = () => {

@@ -51,31 +51,29 @@ export const { handlers: { GET, POST }, auth, signIn, signOut } = NextAuth({
     })
   ],
   callbacks: {
-    async signIn({ user, account, profile }) {
-      console.log('user from signIn', user)
+    async signIn({ account, profile }) {
+      // console.log('user from signIn', user)
       if (account.provider === 'google') {
         connectToDb();
         try {
-          const user = await User.findOne({ email: profile.email });
-          if (!user) {
-            const user = await User.create({
+          const e_user = await User.findOne({ email: profile.email });
+          if (!e_user) {
+            const new_user = await User.create({
               firstName: profile.given_name,
               lastName: profile.family_name,
               email: profile.email,
               image: profile.picture,
             })
-            await user.save();
+            await new_user.save();
             console.log('User created')
           } else {
-            console.log('user already exist')
-            return user
+            return e_user
           }
         } catch (error) {
           console.log('something went wrong', error)
           return false
         }
       }
-      // console.log(profile)
       return true
     },
     ...authConfig.callbacks

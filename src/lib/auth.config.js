@@ -1,11 +1,14 @@
 export const authConfig = {
+  session: {
+    strategy: 'jwt'
+  }, 
   pages: {
     signIn: '/login'
   },
   providers: [],
   callbacks: {
     async jwt({ token, user }) {
-      // console.log('user from auth.config ', user)
+      // console.log('token jwt from auth.config ', token)
       if (user) {
         token.id = user.id,
           token.isAdmin = user?._doc?.isAdmin
@@ -13,6 +16,9 @@ export const authConfig = {
       return token
     },
     async session({ session, token }) {
+      console.log('session from auth.config ', session)
+      console.log('token session from auth.config ', token)
+
       if (token) {
         session.user.id = token.id
         session.user.isAdmin = token.isAdmin
