@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import Divider from "../../../components/Divider";
-import FormTitle from "../../../components/FormTitle";
 import GoogleButton from "../../../components/GoogleButton";
 import Input from "../../../components/Input";
 import SubmitButton from "../../../components/SubmitButton";
@@ -12,7 +11,7 @@ const Login = async () => {
   return (
     <div className="flex justify-center item-center">
       <div style={{ boxShadow: 'inset 8px 8px 20px #e0e0e0,inset -8px -8px 20px #f6f6f6' }} className="flex rounded-md bg-[#f5f5f5] shadow-sm  flex-col py-8 md:py-10 gap-y-6 w-[448px]  px-6 md:px-10 ">
-        
+
         <form action={handleGoogleLogin}>
           <GoogleButton />
         </form>

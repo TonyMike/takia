@@ -1,6 +1,3 @@
-// "use client"
-
-
 import Image from "next/image";
 import Link from "next/link";
 import { auth } from "../../lib/auth";
@@ -9,24 +6,23 @@ import TkLink from "../TkLink";
 import MdSearch from "./MdSearch";
 import MenuDropDown from "./MenuDropDown";
 import Search from "./Search";
-
-
+import { BsList } from "react-icons/bs";
+import { LuListMinus } from "react-icons/lu";
+import SideBar from "../SideBar";
 
 
 const Header = async () => {
   const session = await auth()
   console.log(session, 'from header')
   return (
-    <header className="flex sticky top-0 z-10 justify-between items-center py-2 px-5 md:px-20 bg-white border-b border-gray-200">
+    <header className="flex sticky top-0 z-10 justify-between items-center py-2 px-3 md:px-20 bg-white border-b border-gray-200">
       {/* logo */}
-      <>
-        <Link href={'/'} className="hidden md:block">
-          <Image src='/takia.png' width={80} height={80} />
+      <div className="flex items-center gap-x-2">
+        <SideBar />
+        <Link href={'/'} className="">
+          <Image src='/takiaLogo.png' width={80} height={70} />
         </Link>
-        <div className=" md:hidden">
-          <SellNow />
-        </div>
-      </>
+      </div>
 
 
       <div className=" hidden md:block">

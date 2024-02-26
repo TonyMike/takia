@@ -3,15 +3,15 @@
 import Link from "next/link";
 import { useState } from "react";
 import { BiLogOutCircle } from "react-icons/bi";
-import { PiListBold } from "react-icons/pi";
+// import { PiListBold } from "react-icons/pi";
 import { handleLogout } from "../../lib/actions";
 const MenuDropDown = () => {
   const [open, setOpen] = useState(false);
   return (
 
     <div className="relative " >
-      <div onClick={() => setOpen(prev => !prev)} className=" flex items-center gap-x-2 cursor-pointer rounded-full border border-gray-200 hover:bg-gray-50 px-3 py-2">
-        <PiListBold size={20} />
+      <div onClick={() => setOpen(prev => !prev)} className=" flex items-center gap-x-2 cursor-pointer rounded-full border border-gray-200 hover:bg-gray-50 px-2 py-2">
+        {/* <PiListBold size={20} /> */}
         <p className="text-[10px] leading-normal rounded-full bg-black text-white p-1 md:p-1.5 ">AM</p>
       </div>
       <>
