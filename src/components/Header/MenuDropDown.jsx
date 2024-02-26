@@ -22,9 +22,12 @@ const MenuDropDown = () => {
                 <p className="text-sm">Anthony Michael</p>
                 <p className="text-sm font-bold">tee.jhay1@gmail.com</p>
               </div>
-              <ul className="px-4 space-y-3  text-sm font-bold pb-4 border-b border-gray-200">
-                <Link href={'/dashboard'}>Dashboard</Link>
-                <li>My Profile</li>
+              <ul className="[&_li]:px-4   text-sm font-bold pb-4 border-b [&_li]:py-2 [&_li:hover]:bg-gray-100 border-gray-200">
+
+                <li>
+                  <Link href={'/dashboard'}>Dashboard</Link>
+                </li>
+                <li className="hover:bg-gray-100  ">My Profile</li>
                 <li>Messages</li>
               </ul>
               <form action={handleLogout}>
