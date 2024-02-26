@@ -15,7 +15,7 @@ const Header = async () => {
   const session = await auth()
   console.log(session, 'from header')
   return (
-    <header className="flex sticky top-0 z-10 justify-between items-center py-2 px-3 md:px-20 bg-white border-b border-gray-200">
+    <header className="flex sticky top-0 z-10 justify-between items-center py-2 px-3 sm:px-20 md:px-12 xl:px-44 bg-white border-b border-gray-200">
       {/* logo */}
       <div className="flex items-center gap-x-2">
         <SideBar />
