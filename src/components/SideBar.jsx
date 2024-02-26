@@ -32,14 +32,14 @@ const SideBar = () => {
           className="h-screen top-0 left-0 z-40 absolute bg-black bg-opacity-25 w-full">
           <div className="h-screen w-4/5 border-y border-y-gray-200 bg-white"  >
             <div className="flex justify-between items-center border-b border-b-gray-200 py-2.5 px-5  ">
-              <Image src={'/takiaLogo.png'} width={80} height={70} />
+              <Image src={'/takiaLogo.png'} alt="takia logo" width={80} height={70} />
               <div className="rounded-full border cursor-pointer border-gray-300 p-1.5 " onClick={toggleSideBar} >
                 <IoMdClose size={23} className="text-gray-800" />
               </div>
             </div>
           </div>
         </motion.nav>
-      
+
     </div>
   );
 }
