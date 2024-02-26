@@ -11,10 +11,10 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className='min-h-screen '>
-        <div className="flex flex-col justify-between min-h-screen">
+      <body>
+        <div className="flex flex-col justify-between min-h-screen bg-cover " style={{ backgroundImage: 'url(/bg.png)' }} >
           <Header />
-          <div className="px-6 md:px-16 lg:px-28 py-6 md:py-10">
+          <div className="px-6 md:px-16 relative lg:px-28 py-6 md:py-10  "  >
             {children}
           </div>
           <Footer />

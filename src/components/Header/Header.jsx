@@ -17,7 +17,7 @@ const Header = async () => {
   const session = await auth()
   console.log(session, 'from header')
   return (
-    <header className="flex relative justify-between items-center py-2 px-5 md:px-20 bg-white border-b border-gray-200">
+    <header className="flex sticky top-0 z-10 justify-between items-center py-2 px-5 md:px-20 bg-white border-b border-gray-200">
       {/* logo */}
       <>
         <Link href={'/'} className="hidden md:block">
