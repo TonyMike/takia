@@ -8,7 +8,7 @@ const ProductCard = ({ name, image, price,imageCount }) => {
         <div className="bg-black text-center text-xs text-white bg-opacity-60 absolute  h-5 flex items-center justify-center w-6">{imageCount}</div>
       </div>
       <div className="p-3 ">
-        <p className="text-ellipsis text-gray-700 overflow-hidden text-nowrap">{name}</p>
+        <p className="text-ellipsis text-gray-700 w-full overflow-hidden text-nowrap">{name}</p>
         <p className="font-bold"> {price}</p>
       </div>
     </div>
