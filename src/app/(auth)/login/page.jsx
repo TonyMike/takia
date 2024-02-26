@@ -13,9 +13,9 @@ const Login = async () => {
       </div>
 
       <div className="flex-1  ">
-        <div style={{ boxShadow: 'inset 8px 8px 20px #e0e0e0,inset -8px -8px 20px #e7e7e7' }} className="flex  bg-[#f3f3f3] shadow-sm max-w-md flex-col h-full py-8 gap-y-6  px-6 md:px-10 ">
+        <div style={{ boxShadow: 'inset 8px 8px 20px #e0e0e0,inset -8px -8px 20px #f6f6f6' }} className="flex rounded-md bg-[#f5f5f5] shadow-sm max-w-md flex-col h-full py-8 gap-y-6  px-6 md:px-10 ">
           <form action={handleGoogleLogin}>
-            <button className=" w-full flex justify-center   items-center gap-3 py-3 rounded-full border border-black ">
+            <button className=" w-full flex justify-center hover:bg-[#f2f2f2]  items-center gap-3 py-3 rounded-full border border-black ">
               <FcGoogle />
               <span>Continue with Google</span>
             </button>
@@ -28,7 +28,7 @@ const Login = async () => {
           <form action={loginUser} className="flex  flex-col gap-y-6 md:gap-8">
             <input type="text" className="px-5 py-2 outline-none border-none rounded-full " style={{ boxShadow: 'inset 6px 6px 6px 0 #cbced1, inset -6px -6px 6px 0 #ffffff ' }} placeholder="Email" name="email" />
             <input type="password" className="px-5 py-2 outline-none border-none rounded-full" style={{ boxShadow: 'inset 6px 6px 6px 0 #cbced1, inset -6px -6px 6px 0 #ffffff ' }} placeholder="Password" name="password" />
-            <button className="bg-black py-3 rounded-md text-white">Login</button>
+            <button className="bg-black py-3 rounded-md hover:opacity-85 text-white">Login</button>
             <p className="text-center">
               {"Don't have an account? "} <Link href='/register' className="font-bold">Sign up</Link>
             </p>

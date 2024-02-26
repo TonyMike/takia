@@ -26,6 +26,7 @@ body {
 @layer utilities {
   .text-balance {
     text-wrap: balance;
+    color: #f6f6f6;
   }
 }
 .n{
