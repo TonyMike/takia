@@ -30,6 +30,7 @@ const ProductsList = () => {
             name={x?.title}
             image={x?.images[0]}
             price="$19.99"
+            imageCount={x.images.length}
           />
         })
       }

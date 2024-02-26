@@ -10,7 +10,7 @@ export default  function Home() {
   const list = Array(16).fill('')
   return (
     <div className="">
-      <div className="flex  gap-x-5">
+      <div className="flex  md:gap-x-5">
         <div className="sticky top-0">
           <Categories />
         </div>
