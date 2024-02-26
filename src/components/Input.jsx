@@ -26,7 +26,7 @@ const Input = ({ label, name, placeholder, type = 'text' }) => {
         }
 
       </div>
-      <input type={show ? 'text' : type} className="px-5 py-2.5 outline-none border-none rounded-full " style={{ boxShadow: 'inset 6px 6px 6px 0 #cbced1, inset -6px -6px 6px 0 #ffffff ' }} placeholder={placeholder} name={name} required />
+      <input type={show ? 'text' : type} className="px-5 py-2.5 outline-none min-w-0 border-none rounded-full " style={{ boxShadow: 'inset 6px 6px 6px 0 #cbced1, inset -6px -6px 6px 0 #ffffff ' }} placeholder={placeholder} name={name} required />
     </div>
   );
 }
