@@ -1,11 +1,11 @@
 "use server"
 import Link from "next/link";
+import Divider from "../../../components/Divider";
 import FormTitle from "../../../components/FormTitle";
 import GoogleButton from "../../../components/GoogleButton";
 import Input from "../../../components/Input";
 import SubmitButton from "../../../components/SubmitButton";
-import { registerUser } from "../../../lib/actions";
-import Divider from "../../../components/Divider";
+import { handleGoogleLogin, registerUser } from "../../../lib/actions";
 
 const Register = () => {
   return (
@@ -26,7 +26,10 @@ const Register = () => {
           <p className="text-center text-gray-700 ">
             {"Have an account already ? "} <Link href='/login' className="font-bold underline ml-1">Log in</Link>
           </p>
-          <Divider />
+
+        </form>
+        <Divider />
+        <form action={handleGoogleLogin}>
           <GoogleButton />
         </form>
       </div>

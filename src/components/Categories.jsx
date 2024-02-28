@@ -1,9 +1,12 @@
 import { categories } from "../lib/data";
+import FormTitle from "./FormTitle";
 
 const Categories = () => {
   return (
     <div className="hidden md:block w-[200px] lg:w-[250px]  py-3">
-      <h2 className="mb-1 text-xl font-bold px-7 ">Categories</h2>
+      {/* <h2 className="mb-1 text-xl font-bold px-7 ">Categories</h2> */}
+      <FormTitle title={'Category'} />
+
       <ul>
         {
           categories.map((cat) => {

@@ -4,16 +4,26 @@ import Link from "next/link";
 import { useState } from "react";
 import { BiLogOutCircle } from "react-icons/bi";
 // import { PiListBold } from "react-icons/pi";
+import Image from "next/image";
 import { handleLogout } from "../../lib/actions";
-const MenuDropDown = () => {
+const MenuDropDown = ({ user }) => {
   const [open, setOpen] = useState(false);
   return (
 
     <div className="relative " >
-      <div onClick={() => setOpen(prev => !prev)} className=" flex items-center gap-x-2 cursor-pointer rounded-full border border-gray-200 hover:bg-gray-50 px-2 py-2">
-        {/* <PiListBold size={20} /> */}
-        <p className="text-[10px] leading-normal rounded-full bg-black text-white p-1 md:p-1.5 ">AM</p>
-      </div>
+
+      {
+        user ? (
+          <div className="h-10 w-10 transition-all bg-transparent hover:bg-gray-200 rounded-full p-1 ">
+            <div className=" bg-red-400 h-full w-full relative rounded-full">
+
+              <Image src={user.image} alt={user?.name || user.firstName} fill objectFit="cover" className="rounded-full  cursor-pointer " />
+            </div>
+          </div>
+        ) : <div onClick={() => setOpen(prev => !prev)} className=" flex items-center gap-x-2 cursor-pointer rounded-full border border-gray-200 hover:bg-gray-50 px-2 py-2">
+          <p className="text-[10px]  leading-normal rounded-full bg-black text-white p-1 md:p-1.5 ">AM</p>
+        </div>
+      }
       <>
         {
           open && (

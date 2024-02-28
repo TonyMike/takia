@@ -20,7 +20,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className="overflow-x-hidden">
+      <body className="overflow-x-hidden  select-none ">
         <div className="flex flex-col justify-between min-h-screen bg-cover " style={{ backgroundImage: 'url(/bg.png)' }} >
           <Header />
           <div className="px-6 sm:px-20 md:px-12 relative lg:px-28 py-6 md:py-10 xl:px-44  "  >
