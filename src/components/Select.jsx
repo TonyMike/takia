@@ -7,7 +7,7 @@ const Select = ({ label, name, placeholder }) => {
           {label} <span className="text-red-600">*</span>
         </label>
       </div>
-      <select name={name} id="" className="pl-3  py-2.5 text-sm text-gray-800 outline-none min-w-0 border-none rounded-full " style={{ boxShadow: 'inset 6px 6px 6px 0 #cbced1, inset -6px -6px 6px 0 #ffffff ' }}>
+      <select name={name} id="" className="pl-3 appearance-none py-2.5 text-sm text-gray-800 outline-none min-w-0 border-none rounded-full " style={{ boxShadow: 'inset 6px 6px 6px 0 #cbced1, inset -6px -6px 6px 0 #ffffff ' }}>
         <option value="" >{placeholder}
         </option>
         <option value="">one</option>
