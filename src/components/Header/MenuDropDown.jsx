@@ -14,7 +14,7 @@ const MenuDropDown = ({ user }) => {
 
       {
         user ? (
-          <div className="h-10 w-10 transition-all bg-transparent hover:bg-gray-200 rounded-full p-1 " onClick={() => setOpen(prev => !prev)}>
+          <div className="h-11 w-11 transition-all bg-transparent hover:bg-gray-200 rounded-full p-1 " onClick={() => setOpen(prev => !prev)}>
             <div className=" bg-red-400 h-full w-full relative rounded-full">
               <Image src={user.image} alt={user?.name || user.firstName} fill objectFit="cover" className="rounded-full  cursor-pointer " />
             </div>
@@ -30,8 +30,8 @@ const MenuDropDown = ({ user }) => {
           open && (
             <div className="absolute right-0 bg-white space-y-4 py-4  border border-gray-200 shadow-sm rounded-md top-12 ">
               <div className="space-y-1 border-b px-4 pb-4 border-gray-200">
-                <p className="text-sm">Anthony Michael</p>
-                <p className="text-sm font-bold">tee.jhay1@gmail.com</p>
+                <p className="text-sm">{user?.name}</p>
+                <p className="text-sm font-bold">{user?.email}</p>
               </div>
               <ul className="[&_li]:px-4   text-sm font-bold pb-4 border-b [&_li]:py-2 [&_li:hover]:bg-gray-100 border-gray-200">
 
