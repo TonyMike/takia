@@ -9,11 +9,17 @@ import { handleGoogleLogin, registerUser } from "../../../lib/actions";
 
 const Register = () => {
   return (
-    <div className="flex justify-center item-center">
+    <div className="flex justify-center py-3 gap-y-3 items-center flex-col">
+      {/* <div className="item-start">
+        <FormTitle title={'CREATE AN ACCOUNT'} />
+      </div> */}
       <div style={{ boxShadow: 'inset 8px 8px 20px #e0e0e0,inset -8px -8px 20px #f6f6f6' }} className="flex rounded-md bg-[#f5f5f5] shadow-sm  flex-col py-8 md:py-10 gap-y-6 w-[450px]  px-6 md:px-10 ">
-        <div className="">
-          <FormTitle title={'Create an account'} />
-        </div>
+
+        <form action={handleGoogleLogin}>
+          <GoogleButton text={'Sign up with Google'} />
+        </form>
+        <Divider />
+
         <form action={registerUser} className="flex  flex-col gap-y-6 md:gap-6">
           <div className="grid grid-cols-2 gap-x-2 ">
             <Input name={'firstName'} type={'text'} label={'First Name'} placeholder={'John'} />
@@ -28,10 +34,7 @@ const Register = () => {
           </p>
 
         </form>
-        <Divider />
-        <form action={handleGoogleLogin}>
-          <GoogleButton />
-        </form>
+
       </div>
     </div>
   );

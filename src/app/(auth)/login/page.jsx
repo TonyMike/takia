@@ -13,7 +13,7 @@ const Login = async () => {
       <div style={{ boxShadow: 'inset 8px 8px 20px #e0e0e0,inset -8px -8px 20px #f6f6f6' }} className="flex rounded-md bg-[#f5f5f5] shadow-sm  flex-col py-8 md:py-10 gap-y-6 w-[448px]  px-6 md:px-10 ">
 
         <form action={handleGoogleLogin}>
-          <GoogleButton />
+          <GoogleButton text={'Sign in with Google'} />
         </form>
         <Divider />
         <form action={loginUser} className="flex  flex-col gap-y-6 md:gap-8">

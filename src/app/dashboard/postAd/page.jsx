@@ -27,7 +27,7 @@ const PostAd = () => {
           Join the fun by posting a free classified today completely on us!
         </p>
         <div className=" border border-gray-300">
-          <h2 className="font-bold py-2 border-b border-b-gray-300 px-3 text-center  ">SECURE A FAST SALE EFFORTLESSLY!</h2>
+          <h2 className="font-bold py-2 border-b border-b-gray-300 px-3 text-center">SECURE A FAST SALE EFFORTLESSLY!</h2>
           <ul className="py-3 space-y-2">
             {
               tips.map((tip, index) => <li className="text-gray-600 px-3 flex items-start space-x-2 text-sm" key={index}>

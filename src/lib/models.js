@@ -1,6 +1,8 @@
 import mongoose from "mongoose";
 const Schema = mongoose.Schema
 
+
+// ! add a business name, whatsapp contact line and facebook contact to the user table
 const UserSchema = new Schema(
   {
     firstName: {
