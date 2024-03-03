@@ -12,7 +12,7 @@ export const registerUser = async (formData) => {
     const exist = await User.findOne({ email })
     if (exist) {
       // console.log('user  already exist')
-      throw new Error('User with this email already exist')
+      // throw new Error('User with this email already exist')
     } else {
       const salt = await bcrypt.genSalt(10)
       const hashedPassword = await bcrypt.hash(password, salt)

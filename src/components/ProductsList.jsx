@@ -28,7 +28,7 @@ const ProductsList = () => {
         products.map((x, i) => {
 
           return (
-            <Link key={x.id} href={`/products/${x?.title}`} >
+            <Link key={x.id} href={`/products/${x?.id}`} >
               <ProductCard
                 name={x?.title}
                 image={x?.images[0]}

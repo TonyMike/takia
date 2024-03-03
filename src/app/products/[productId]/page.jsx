@@ -5,13 +5,14 @@ import { IoLogoWhatsapp } from "react-icons/io";
 import { IoLogoFacebook } from "react-icons/io5";
 
 import FormTitle from "../../../components/FormTitle";
+import ProductImageView from "../../../components/ProductImageView";
 import ShowContact from "../../../components/ShowContact";
 import { auth } from "../../../lib/auth";
-import ProductImageView from "../../../components/ProductImageView";
 
 
 // ! add a profile page to view the profile of a particular user with the list of all products ever created
-const Product = async () => {
+const Product = async ({ params }) => {
+  const { productId } = params;
   const session = await auth()
   const safetyTips = [
     "Don't send any prepayments",
@@ -27,13 +28,13 @@ const Product = async () => {
           <p>Home/Gaming/Ps4 </p>
         </div>
 
-        <div className="space-y-4 grid grid-cols-1 lg:grid-cols-6 xl:grid-cols-7 gap-x-5">
+        <div className=" space-y-5 md:space-y-0 grid grid-cols-1 lg:grid-cols-6 xl:grid-cols-7 gap-x-5">
 
           <div className="lg:col-span-4 xl:col-span-5">
-            <ProductImageView />
+            <ProductImageView productId={productId} />
           </div>
 
-          <div className=" flex flex-col lg:flex-col md:flex-row md:gap-x-5  lg:col-span-2 ">
+          <div className=" flex flex-col lg:flex-col md:flex-row md:gap-x-5 gap-y-5  lg:col-span-2 ">
             <div className="bg-white space-y-3 px-5 flex-1 py-4 shadow-md rounded-md">
 
               <h2 className="text-2xl font-bold  capitalize border-b border-gray-200 pb-2 bg-white "> ₦ 14,100</h2>
@@ -66,9 +67,9 @@ const Product = async () => {
                     <BsTwitterX className="hover:scale-125 transition-all " />
                   </div>
                 </div>
-
-
                 <ShowContact />
+
+                {/* product description */}
                 <div>
                   <h4 className="text-base font-bold">Description:</h4>
                   <p className="text-sm text-gray-700 italic text-justify font-[montserrat] ">PlayStation 5 Controller Skin High quality vinyl with air channel adhesive for easy bubble free install & mess free removal Pressure sensitive
@@ -78,6 +79,7 @@ const Product = async () => {
               </div>
             </div>
 
+            {/* safety tips */}
             <div className="bg-white px-5 flex-1 py-4 shadow-md rounded-md">
               <div className="text-center">
                 <FormTitle title="Tips for safety" />

@@ -1,7 +1,7 @@
 export const authConfig = {
   session: {
     strategy: 'jwt'
-  }, 
+  },
   pages: {
     signIn: '/login'
   },
@@ -16,8 +16,8 @@ export const authConfig = {
       return token
     },
     async session({ session, token }) {
-      console.log('session from auth.config ', session)
-      console.log('token session from auth.config ', token)
+      // console.log('session from auth.config ', session)
+      // console.log('token session from auth.config ', token)
 
       if (token) {
         session.user.id = token.id
