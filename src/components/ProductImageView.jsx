@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
-import { Thumbs, Navigation, Pagination, Scrollbar } from 'swiper/modules';
+import { Navigation, Pagination } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
 const ProductImageView = ({ productId }) => {
@@ -42,7 +42,7 @@ const ProductImageView = ({ productId }) => {
         >
           {
             product?.images.map((image, index) => {
-              return <SwiperSlide>
+              return <SwiperSlide key={index}>
                 <div className="bg-transparent relative w-full h-full ">
                   <Image src={image} layout="fill" objectFit="containe" alt={product?.title} />
                 </div>
