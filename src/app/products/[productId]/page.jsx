@@ -1,8 +1,14 @@
 import Image from "next/image";
+import { BsTwitterX } from "react-icons/bs";
 import { ImLocation } from "react-icons/im";
-import FormTitle from "../../components/FormTitle";
-import ShowContact from "../../components/ShowContact";
-import { auth } from "../../lib/auth";
+import { IoLogoWhatsapp } from "react-icons/io";
+import { IoLogoFacebook } from "react-icons/io5";
+
+import FormTitle from "../../../components/FormTitle";
+import ShowContact from "../../../components/ShowContact";
+import { auth } from "../../../lib/auth";
+import ProductImageView from "../../../components/ProductImageView";
+
 
 // ! add a profile page to view the profile of a particular user with the list of all products ever created
 const Product = async () => {
@@ -23,9 +29,11 @@ const Product = async () => {
 
         <div className="space-y-4 grid grid-cols-1 lg:grid-cols-6 xl:grid-cols-7 gap-x-5">
 
-          <div className="bg-red-300 lg:col-span-4 xl:col-span-5">picture</div>
+          <div className="lg:col-span-4 xl:col-span-5">
+            <ProductImageView />
+          </div>
 
-          <div className=" flex flex-col lg:flex-col md:flex-row md:gap-x-5 gap-y-5  lg:col-span-2 ">
+          <div className=" flex flex-col lg:flex-col md:flex-row md:gap-x-5  lg:col-span-2 ">
             <div className="bg-white space-y-3 px-5 flex-1 py-4 shadow-md rounded-md">
 
               <h2 className="text-2xl font-bold  capitalize border-b border-gray-200 pb-2 bg-white "> ₦ 14,100</h2>
@@ -39,18 +47,34 @@ const Product = async () => {
                   </div>
 
                   <div>
-                  {/* make this a link */}
+                    {/* make this a link */}
                     <h4 className="uppercase overflow-hidden whitespace-nowrap block text-nowrap hover:underline text-gray-700 font-semibold ">{session.user.name}</h4>
                     <p className="text-xs font-[montserrat]  text-gray-500">2y 6m on Takia</p>
                     <div className="flex text-sm mt-0.5 space-x-1 items-center">
-                      <ImLocation className="text-xs text-green-500" />
+                      <ImLocation className="text-sm text-green-500" />
                       <p>Unilag, Lagos</p>
                     </div>
                   </div>
                 </div>
 
                 {/* show contact button */}
+                <div className="flex items-center flex-wrap space-x-2">
+                  <p className="text-[15px] italic font-semibold text-center">Chat via social media: </p>
+                  <div className=" flex items-center text-lg gap-x-3 ">
+                    <IoLogoWhatsapp className="text-green-500 hover:scale-125  transition-all text-xl" />
+                    <IoLogoFacebook className="text-blue-600 hover:scale-125 transition-all text-xl" />
+                    <BsTwitterX className="hover:scale-125 transition-all " />
+                  </div>
+                </div>
+
+
                 <ShowContact />
+                <div>
+                  <h4 className="text-base font-bold">Description:</h4>
+                  <p className="text-sm text-gray-700 italic text-justify font-[montserrat] ">PlayStation 5 Controller Skin High quality vinyl with air channel adhesive for easy bubble free install & mess free removal Pressure sensitive
+                    PlayStation 5 Controller Skin High quality vinyl with air channel adhesive for easy bubble free install & mess free removal Pressure sensitive.
+                    .</p>
+                </div>
               </div>
             </div>
 

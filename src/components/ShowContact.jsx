@@ -14,7 +14,7 @@ const ShowContact = () => {
     <div className="relative">
       <button onClick={toggle} className="bg-gray-900 hover:bg-opacity-90 space-x-3 rounded-md shadow-md flex items-center justify-center text-white py-2  w-full">
         <FaPhoneAlt className="" />
-        <span>Show contact</span>
+        <span>Show Phone No</span>
       </button>
       {
         open && (

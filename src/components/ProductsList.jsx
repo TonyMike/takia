@@ -1,5 +1,6 @@
 "use client"
 
+import Link from "next/link";
 import { useEffect, useState } from "react";
 import ProductCard from "./ProductCard";
 
@@ -25,13 +26,20 @@ const ProductsList = () => {
     <div className=" grid grid-cols-2 grow gap-4  sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4  ">
       {
         products.map((x, i) => {
-          return <ProductCard
-            key={x.id}
-            name={x?.title}
-            image={x?.images[0]}
-            price="$19.99"
-            imageCount={x.images.length}
-          />
+
+          return (
+            <Link href={`/products/${x.id}`} >
+              <ProductCard
+                key={x.id}
+                name={x?.title}
+                image={x?.images[0]}
+                price="$19.99"
+                imageCount={x.images.length}
+              />
+            </Link>
+          )
+
+
         })
       }
     </div>
