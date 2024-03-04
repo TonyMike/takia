@@ -15,7 +15,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 const ProductImageView = ({ productId }) => {
   const [product, setProduct] = useState(null)
   const [thumbsSwiper, setThumbsSwiper] = useState(null)
-  const [direction, setDirection] = useState('');
+  const [direction, setDirection] = useState('vertical');
 
   useEffect(() => {
     const fetchProduct = async () => {
@@ -47,7 +47,7 @@ const ProductImageView = ({ productId }) => {
     return () => {
       window.removeEventListener('resize', handleResize);
     }
-  }, []);
+  }, [direction]);
 
 
 
@@ -79,13 +79,13 @@ const ProductImageView = ({ productId }) => {
           ...
         </Swiper>
       </div>
-      <div className="h-20 md:h-[450px] ">
-        {/* md:order-first md:col-span-1 md:h-96 lg:h-[450px] xl:h-[500px] grid  grid-cols-4 grid-rows-1 md:grid-cols-1 md:grid-rows-4 md:grid-flow-col-dense gap-2 */}
+      <div className="h-20 md:h-[450px] xl:h-[500px] ">
         <Swiper
-          className="   w-full h-full"
+          className="w-full h-full"
           onSwiper={setThumbsSwiper}
           spaceBetween={10}
           slidesPerView={4}
+          // direction={'vertical'}
           direction={direction}
           freeMode={true}
           watchSlidesProgress={true}

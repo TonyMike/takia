@@ -44,12 +44,12 @@ const Product = async ({ params }) => {
 
                 <div className="flex gap-x-3 items-start">
                   <div className="h-16 w-16 relative bg-white  shadow-lg overflow-hidden rounded-full">
-                    <Image fill src={session.user?.image} className="rounded-full" alt={session.user?.name} />
+                    <Image fill src={session?.user?.image} className="rounded-full" alt={session?.user?.name} />
                   </div>
 
                   <div>
                     {/* make this a link */}
-                    <h4 className="uppercase overflow-hidden whitespace-nowrap block text-nowrap hover:underline text-gray-700 font-semibold ">{session.user.name}</h4>
+                    <h4 className="uppercase overflow-hidden whitespace-nowrap block text-nowrap hover:underline text-gray-700 font-semibold ">{session?.user?.name}</h4>
                     <p className="text-xs font-[montserrat]  text-gray-500">2y 6m on Takia</p>
                     <div className="flex text-sm mt-0.5 space-x-1 items-center">
                       <ImLocation className="text-sm text-green-500" />
