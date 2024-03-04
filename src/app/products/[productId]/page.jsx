@@ -10,8 +10,8 @@ import ProductImageView from "../../../components/ProductImageView";
 import ShowContact from "../../../components/ShowContact";
 import { auth } from "../../../lib/auth";
 
+import RelatedProductList from "../../../components/RelatedProductList";
 import { getProduct, safetyTips } from "../../../lib/data";
-
 
 
 // ! add a profile page to view the profile of a particular user with the list of all products ever created
@@ -28,14 +28,14 @@ const Product = async ({ params }) => {
           <p>Home/Gaming/Ps4 </p>
         </div>
 
-        <div className="  space-y-2 md:space-y-0 grid grid-cols-1 lg:grid-cols-6 xl:grid-cols-7 gap-x-5">
+        <div className="  space-y-2 md:space-y-0 grid  grid-cols-1 lg:grid-cols-6 xl:grid-cols-7 gap-x-5">
 
           <div className="lg:col-span-4  xl:col-span-5">
             <ProductImageView productId={productId} />
             {/* //! more information on the product */}
-            <div className="mt-3 py-3 px-2 rounded-md shadow-lg">
-              <div className="flex gap-y-2 flex-col-reverse md:flex-col border-b pb-2 border-gray-200 ">
-                <h2 className="text-lg md:text-xl capitalize text-gray-700 font-bold">{product?.title}</h2>
+            <div className="mt-3 space-y-3 py-5 px-6 rounded-md shadow-lg">
+              <div className="flex gap-y-2 flex-col-reverse md:flex-col  ">
+                <h2 className="text-lg md:text-xl capitalize text-gray-900 font-bold">{product?.title}</h2>
                 <div className="flex items-center justify-between md:justify-start md:space-x-5 space-x-2">
                   <p className="flex items-center gap-x-1 ">
                     <MdAccessTime className="text-takia-orange" />
@@ -48,20 +48,29 @@ const Product = async ({ params }) => {
                   </div>
                 </div>
               </div>
+              <div className="flex md:hidden  justify-between items-center  border-b border-gray-200 pb-2 ">
+                <h2 className="text-xl md:text-2xl font-bold text-takia-orange capitalize "> ₦ 14,100</h2>
+                <h4 className="text-gray-900 font-semibold  text-xl md:text-2xl ">Negotiable</h4>
+              </div>
+
               {/* product description */}
               <div className="mt-4">
                 <h4 className="text-base font-bold">Description:</h4>
-                <p className="text-sm text-gray-700 italic text-justify font-[montserrat] ">PlayStation 5 Controller Skin High quality vinyl with air channel adhesive for easy bubble free install & mess free removal Pressure sensitive
+                <p className="text-xs text-gray-700 my-1 text-justify font-[montserrat] ">PlayStation 5 Controller Skin High quality vinyl with air channel adhesive for easy bubble free install & mess free removal Pressure sensitive
                   PlayStation 5 Controller Skin High quality vinyl with air channel adhesive for easy bubble free install & mess free removal Pressure sensitive.
                   .</p>
               </div>
             </div>
           </div>
 
-          <div className=" flex flex-col lg:flex-col md:flex-row md:gap-x-5 gap-y-5  lg:col-span-2 ">
+
+          <div className=" flex flex-col lg:flex-col  md:flex-row md:gap-x-5 h-fit gap-y-5  lg:col-span-2 ">
             <div className="bg-white space-y-3 px-5 flex-1 py-4 shadow-md rounded-md">
 
-              <h2 className=" text-xl md:text-2xl font-bold  capitalize border-b border-gray-200 pb-2 bg-white "> ₦ 14,100</h2>
+              <div className=" hidden md:flex  justify-between items-center  border-b border-gray-200 pb-2 ">
+                <h2 className="text-xl md:text-2xl font-bold text-takia-orange capitalize "> ₦ 14,100</h2>
+                <h4 className="text-gray-900 font-semibold  text-xl md:text-2xl ">Negotiable</h4>
+              </div>
 
               <div className="grid grid-cols-1  lg:grid-cols-1 gap-5 justify-between">
 
@@ -74,8 +83,8 @@ const Product = async ({ params }) => {
                     {/* //! make the name a link */}
                     <h4 className="uppercase overflow-x-hidden whitespace-nowrap text-sm text-nowrap hover:underline text-gray-700 font-bold ">Anthony micheal juwon</h4>
                     <p className="text-xs font-[montserrat]  text-gray-500">2y 6m on Takia</p>
-
                   </div>
+
                 </div>
 
                 {/* show contact button */}
@@ -117,8 +126,16 @@ const Product = async ({ params }) => {
 
 
       {/* related products */}
-      <div className="bg-orange-500 h-80 w-full">
-
+      <div className=" w-full">
+        <div>
+          <div className="flex space-x-3 items-center ">
+            <div className="bg-takia-orange  rounded-md h-8 w-5" />
+            <h3 className="text-takia-orange text-sm font-bold">Related item</h3>
+          </div>
+        </div>
+        <div className="mt-5">
+          <RelatedProductList />
+        </div>
       </div>
 
     </div>

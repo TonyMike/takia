@@ -68,15 +68,15 @@ const ProductSchema = Schema(
     description: {
       type: String
     },
+    negotiable: {
+      type: Boolean,
+      require: true
+    },
     condition: {
       type: String,
       required: true
     },
     category: {
-      type: String,
-      required: true
-    },
-    subCategory: {
       type: String,
       required: true
     },
@@ -93,7 +93,7 @@ const ProductSchema = Schema(
       required: true,
       unique: true
     },
-    brandDetails: [
+    productDetails: [
       {
         key: String,
         value: String
