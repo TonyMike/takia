@@ -8,14 +8,14 @@ import 'swiper/css/navigation';
 import 'swiper/css/thumbs';
 import "../../src/app/globals.css";
 
-
 import { FreeMode, Navigation, Thumbs } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import useSwiperDirection from "../hooks/useSwiperDirection";
 
 const ProductImageView = ({ productId }) => {
   const [product, setProduct] = useState(null)
   const [thumbsSwiper, setThumbsSwiper] = useState(null)
-  const [direction, setDirection] = useState('vertical');
+  const { direction } = useSwiperDirection()
 
   useEffect(() => {
     const fetchProduct = async () => {
@@ -23,7 +23,7 @@ const ProductImageView = ({ productId }) => {
         const response = await fetch(`https://dummyjson.com/products/${productId}`)
         const data = await response.json()
         setProduct(data)
-        console.log(data.images)
+        // console.log(data.images)
       } catch (error) {
         console.error("Error fetching product:", error)
       }
@@ -31,33 +31,13 @@ const ProductImageView = ({ productId }) => {
     fetchProduct()
   }, [])
 
-  useEffect(() => {
-    const handleResize = () => {
-      if (window.innerWidth > 768) {
-        console.log('window width is less than 768')
-        setDirection('vertical')
-      } else {
-        console.log('window width is greater than 768')
-        setDirection('horizontal')
-      }
-    }
-
-    window.addEventListener('resize', handleResize);
-
-    return () => {
-      window.removeEventListener('resize', handleResize);
-    }
-  }, [direction]);
-
-
-
 
   return (
     <div className="grid grid-cols-1 gap-2 md:gap-4 md:grid-cols-6 md:grid-flow-col-dense">
-      <div className="h-72 bg-gray-100 rounded-md md:col-span-5 md:h-96 lg:h-[450px] xl:h-[500px] ">
+      <div className="h-72  bg-gray-100  rounded-md shadow-lg  md:col-span-5  md:h-[450px] xl:h-[500px] ">
         <Swiper
           modules={[FreeMode, Navigation, Thumbs]}
-          className=" h-full tetx-sm"
+          className=" h-full  "
           spaceBetween={13}
           slidesPerView={1}
           navigation={true}
@@ -70,8 +50,8 @@ const ProductImageView = ({ productId }) => {
           {
             product?.images.map((image, index) => {
               return <SwiperSlide key={index}>
-                <div className="bg-transparent relative w-full h-full ">
-                  <Image src={image} layout="fill" objectFit="containe" alt={product?.title} />
+                <div className=" overflow-hidden text-sm  rounded-md  relative w-full h-full ">
+                  <Image src={image} layout="fill" objectFit="containe" alt={product?.title.slice(0, 6)} />
                 </div>
               </SwiperSlide>
             })
@@ -81,11 +61,10 @@ const ProductImageView = ({ productId }) => {
       </div>
       <div className="h-20 md:h-[450px] xl:h-[500px] ">
         <Swiper
-          className="w-full h-full"
+          className="w-full  rounded-md h-full"
           onSwiper={setThumbsSwiper}
           spaceBetween={10}
           slidesPerView={4}
-          // direction={'vertical'}
           direction={direction}
           freeMode={true}
           watchSlidesProgress={true}
@@ -93,8 +72,10 @@ const ProductImageView = ({ productId }) => {
         >
           {
             product?.images.map((x, i) => {
-              return <SwiperSlide className="h-full overflow-hidden w-full rounded-lg relative bg-green-800  " key={i} >
-                <Image src={x} alt={x} className="" layout="fill" objectFit="cover" />
+              return <SwiperSlide className="h-full   " key={i} >
+                <div className="h-full overflow-hidden rounded-md bg-gray-100 w-full  relative  ">
+                  <Image src={x} alt={product?.title.slice(0, 6)} className="" layout="fill" objectFit="cover" />
+                </div>
               </SwiperSlide>
             })
           }
