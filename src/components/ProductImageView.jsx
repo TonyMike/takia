@@ -34,7 +34,7 @@ const ProductImageView = ({ productId }) => {
 
   return (
     <div className="grid grid-cols-1 gap-2 md:gap-4 md:grid-cols-6 md:grid-flow-col-dense">
-      <div className="h-72  bg-gray-100  rounded-md shadow-lg  md:col-span-5  md:h-[450px] xl:h-[500px] ">
+      <div className="h-72 md:order-last bg-gray-100  rounded-md shadow-lg  md:col-span-5  md:h-[450px] xl:h-[500px] ">
         <Swiper
           modules={[FreeMode, Navigation, Thumbs]}
           className=" h-full  "

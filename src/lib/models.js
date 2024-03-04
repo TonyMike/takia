@@ -45,7 +45,7 @@ const UserSchema = new Schema(
   { timestamps: true }
 )
 
-
+// ! add view count
 const ProductSchema = Schema(
   {
     title: {
