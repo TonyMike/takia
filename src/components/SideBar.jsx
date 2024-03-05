@@ -45,7 +45,13 @@ const SideBar = () => {
               {
                 categories.map(cat=>{
                   return (
-                    <li key={cat} className="py-2 capitalize  text-gray-800">{cat}</li>
+                    <li
+                      className="py-1.5 capitalize flex gap-x-2 px-4 hover:text-white items-center text-[15px] hover:bg-takia-orange "
+                      key={cat.category}
+                    >
+                      <Image  src={cat.icon} alt={cat.category} width={20} height={20} />
+                      <span>{cat.category}</span>
+                    </li>
                   )
                 })
               }

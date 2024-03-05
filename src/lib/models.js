@@ -89,6 +89,7 @@ const ProductSchema = Schema(
       required: true,
     },
     slug: {
+      //! perform an operation on the slug to replace all empty string with -
       type: String,
       required: true,
       unique: true
