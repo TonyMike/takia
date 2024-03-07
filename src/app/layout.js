@@ -17,11 +17,11 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className="overflow-x-hidden  select-none ">
-      <TakiaAnalytics />
+        <TakiaAnalytics />
 
         <div className="flex flex-col  min-h-screen bg-cover " style={{ backgroundImage: 'url(/bg.png)' }} >
           <Header />
-          <div className="px-6 sm:px-20 grow md:px-12 relative lg:px-28 py-6 md:py-10 xl:px-44  "  >
+          <div className="px-6 sm:px-20  items-center grow md:px-12 relative lg:px-28 py-6 md:py-10 xl:px-44  "  >
             {children}
           </div>
 

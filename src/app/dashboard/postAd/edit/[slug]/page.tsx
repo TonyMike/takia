@@ -40,7 +40,7 @@ const EditPostPage = () => {
       </div>
       <div style={{ boxShadow: 'inset 8px 8px 20px #e0e0e0,inset -8px -8px 20px #f6f6f6' }} className="flex rounded-md bg-[#f5f5f5] shadow-sm  flex-col py-8 md:py-10 gap-y-6 sm:w-[500px] xl:w-[650px]  px-6 md:px-10 ">
         <div>
-          <FormTitle title={'Post free advert'} />
+          <FormTitle title={'Edit Ads '} />
         </div>
         <form className="flex  flex-col gap-y-6 md:gap-8">
           <Select label={'Category'} name={'category'} placeholder={'Select a category...'} />

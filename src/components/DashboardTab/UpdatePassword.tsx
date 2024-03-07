@@ -9,9 +9,9 @@ const UpdatePasssword = () => {
         <p className="text-gray-500 text-sm">Google users do not need to change their passwords</p>
       </div>
       <Input placeholder="*********" label="Old Password" name="oldPassword" type="password" />
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-1  lg:grid-cols-1 xl:grid-cols-2 gap-4">
         <Input placeholder="*********" label="New Password" name="newPassword" type="password" />
-        <Input placeholder="*********" label="Confirm New Password" name="confirmNewPassword" type="password" />
+        <Input placeholder="*********" label="Confirm Password" name="confirmNewPassword" type="password" />
       </div>
       <div className="flex justify-center">
         <SubmitButton text="update" />

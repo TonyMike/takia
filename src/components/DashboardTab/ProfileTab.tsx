@@ -4,7 +4,7 @@ import SubmitButton from "../SubmitButton";
 const ProfileTab = () => {
   return (
     <div className="bg-white rounded-xl shadow-takia space-y-4 p-4 md:p-8">
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-1 lg:grid-cols-2 gap-4">
         <Input placeholder="First Name" label="First Name" name="firstName" value="Tony" />
         <Input placeholder="Last Name" label="Last Name" name="lastName" value="michael" />
         <Input placeholder="Email" disabled={true} value="tee.jhay1@gmail.com" label="Email" name="email" />

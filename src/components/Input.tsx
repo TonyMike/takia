@@ -38,7 +38,7 @@ const Input = ({ label, name, placeholder, type = 'text', disabled = false, valu
         }
 
       </div>
-      <input type={show ? 'text' : type} onChange={(e) => setInitialValue(e.target.value)} disabled={disabled} value={initialValue} className={`px-5 py-2.5 placeholder:text-sm outline-none min-w-0 border-none rounded-full ${disabled ? 'cursor-not-allowed italic' : 'cursor-auto'} `} style={{ boxShadow: 'inset 6px 6px 6px 0 #cbced1, inset -6px -6px 6px 0 #ffffff ' }} placeholder={placeholder} name={name} required={required} />
+      <input type={show ? 'text' : type} onChange={(e) => setInitialValue(e.target.value)} disabled={disabled} value={initialValue} className={`px-5 py-2.5 text-sm placeholder:text-sm outline-none min-w-0 border-none rounded-full ${disabled ? 'cursor-not-allowed italic' : 'cursor-auto'} `} style={{ boxShadow: 'inset 6px 6px 6px 0 #cbced1, inset -6px -6px 6px 0 #ffffff ' }} placeholder={placeholder} name={name} required={required} />
     </div>
   );
 }
