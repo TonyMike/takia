@@ -53,3 +53,10 @@ export const handleLogout = async () => {
   await signOut({ redirectUrl: '/' })
 
 }
+
+export const beforeSend = (event) => {
+  if (event.url.includes('/admin')) {
+    return null;
+  }
+  return event;
+}

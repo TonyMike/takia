@@ -22,10 +22,10 @@ const Register = () => {
             <Input name={'firstName'} type={'text'} label={'First Name'} placeholder={'John'} />
             <Input name={'lastName'} type={'text'} label={'Last Name'} placeholder={'Smith'} />
           </div>
-          {/* <div className="grid grid-cols-2 gap-x-2">
+          <div className="grid grid-cols-2 gap-x-2">
             <Input name={'email'} type={'email'} label={'Email'} placeholder={'johnsmith@example.com'} />
             <Input name='phone' type={'text'} label={'Phone'} placeholder='09164206921' />
-          </div> */}
+          </div>
           <Input name={'password'} type={'password'} label={'Password'} placeholder={'************'} />
           <Input type={'password'} label={'Confirm Password'} placeholder={'************'} />
           <SubmitButton />
