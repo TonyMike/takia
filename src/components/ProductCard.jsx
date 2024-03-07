@@ -4,7 +4,7 @@ import { ImLocation2 } from "react-icons/im";
 
 const ProductCard = ({ name, image, price, imageCount }) => {
   return (
-    <div className="w-full  overflow-hidden rounded-lg bg-white shadow-lg  ">
+    <div className="w-full  overflow-hidden rounded-lg bg-white shadow-takia  ">
       <div className=" relative min-h-36">
         <Image src={image} fill alt='image' objectFit="cover" className="object-center  object-cover" />
         <div className="bg-black text-center text-xs text-white bg-opacity-60 absolute  h-6 flex items-center justify-center w-7">{imageCount}</div>

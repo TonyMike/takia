@@ -11,7 +11,9 @@ const Categories = () => {
       {/* <h2 className="mb-1 text-xl font-bold px-7 ">Categories</h2> */}
 
       <div className="px-4">
-        <FormTitle title={'Category'} />
+        {/* <FormTitle title={'Category'} /> */}
+        <h2 className="font-bold text-xl">All Categories</h2>
+
       </div>
 
       <ul className="mt-2">

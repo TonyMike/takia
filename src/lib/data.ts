@@ -11,6 +11,8 @@
 //   'vehicles',
 //   'Properties',
 //   'Musical Instrument'
+
+
 // ];
 interface Category {
   category: string;
@@ -52,7 +54,7 @@ export const categories: Category[] = [
 
   {
     category: "Home Appliances",
-    icon: '/icons/home-appliances.png'
+    icon: '/icons/home-appliance.png'
   },
   {
     category: "vehicles",
@@ -75,7 +77,7 @@ export const safetyTips = [
   "Verify all documents and only pay if you're satisfiedjdjdjjdjdjdjd d"
 ]
 
-export const getProduct = async (productId) => {
+export const getProduct = async (productId:{productId:Object}) => {
   try {
     const data = await fetch(`https://dummyjson.com/products/${productId}`)
       .then(response => response.json())

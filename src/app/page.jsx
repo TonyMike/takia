@@ -1,9 +1,8 @@
 
 
 import Categories from "../components/Categories";
-import ProductCard from "../components/ProductCard";
 import ProductsList from "../components/ProductsList";
-export default  function Home() {
+export default function Home() {
 
   return (
     <div className="">

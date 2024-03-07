@@ -34,7 +34,7 @@ const ProductImageView = ({ productId }) => {
 
   return (
     <div className="grid grid-cols-1 gap-2 md:gap-4 md:grid-cols-6 md:grid-flow-col-dense">
-      <div className="h-[300px] md:order-last bg-gray-100  rounded-md shadow-lg  md:col-span-5  md:h-[450px] xl:h-[500px] ">
+      <div className="h-[300px] md:order-last bg-gray-100  rounded-md shadow-lg  md:col-span-5  md:h-[450px] xl:h-[550px] ">
         <Swiper
           modules={[FreeMode, Navigation, Thumbs]}
           className=" h-full  "
@@ -51,7 +51,7 @@ const ProductImageView = ({ productId }) => {
             product?.images.map((image, index) => {
               return <SwiperSlide key={index}>
                 <div className=" overflow-hidden text-sm  rounded-md  relative w-full h-full ">
-                  <Image src={image} layout="fill" objectFit="containe" alt={product?.title.slice(0, 6)} />
+                  <Image src={image} layout="fill" className="object-contain" alt={product?.title.slice(0, 6)} />
                 </div>
               </SwiperSlide>
             })
@@ -59,11 +59,12 @@ const ProductImageView = ({ productId }) => {
           ...
         </Swiper>
       </div>
-      <div className="h-20 md:h-[450px] xl:h-[500px] ">
+      <div className=" md:h-[450px] xl:h-[550px] ">
         <Swiper
           className="w-full  rounded-md h-full"
           onSwiper={setThumbsSwiper}
-          spaceBetween={10}
+          spaceBetween={`${direction === 'horizontal' ? 10 : 15} `}
+          // spaceBetween={10}
           slidesPerView={4}
           direction={direction}
           freeMode={true}
@@ -72,9 +73,9 @@ const ProductImageView = ({ productId }) => {
         >
           {
             product?.images.map((x, i) => {
-              return <SwiperSlide className="h-full   " key={i} >
-                <div className="h-full overflow-hidden rounded-md bg-gray-100 w-full  relative  ">
-                  <Image src={x} alt={product?.title.slice(0, 6)} className="" layout="fill" objectFit="cover" />
+              return <SwiperSlide className="h-full    " key={i} >
+                <div className="h-full overflow-hidden rounded-md   w-full  relative  ">
+                  <Image src={x} alt={product?.title.slice(0, 6)} className="object-contain" layout="fill" />
                 </div>
               </SwiperSlide>
             })

@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 
 const useSwiperDirection = () => {
   const [direction, setDirection] = useState('horizontal');
-  const [width, setWidth] = useState(window.innerWidth)
+  const [width, setWidth] = useState(globalThis?.innerWidth)
 
   useEffect(() => {
 

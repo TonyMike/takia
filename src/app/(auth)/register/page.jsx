@@ -1,7 +1,6 @@
 "use server"
 import Link from "next/link";
 import Divider from "../../../components/Divider";
-import FormTitle from "../../../components/FormTitle";
 import GoogleButton from "../../../components/GoogleButton";
 import Input from "../../../components/Input";
 import SubmitButton from "../../../components/SubmitButton";
@@ -25,7 +24,10 @@ const Register = () => {
             <Input name={'firstName'} type={'text'} label={'First Name'} placeholder={'John'} />
             <Input name={'lastName'} type={'text'} label={'Last Name'} placeholder={'Smith'} />
           </div>
-          <Input name={'email'} type={'email'} label={'Email'} placeholder={'johnsmith@example.com'} />
+          <div className="grid grid-cols-2 gap-x-2">
+            <Input name={'email'} type={'email'} label={'Email'} placeholder={'johnsmith@example.com'} />
+            <Input name='phone' type={'text'} label={'Phone'} placeholder='09164206921' />
+          </div>
           <Input name={'password'} type={'password'} label={'Password'} placeholder={'************'} />
           <Input type={'password'} label={'Confirm Password'} placeholder={'************'} />
           <SubmitButton />

@@ -1,4 +1,4 @@
-const PriceInput = ({ name, placeholder }) => {
+const PriceInput = ({ name, placeholder }: { name?: string; placeholder?: string }) => {
   return (
     <div className="flex gap-y-2 flex-col">
       <div className="flex items-center justify-between">

@@ -40,7 +40,7 @@ const SideBar = () => {
             </div>
           </div>
           <div className="px-5 py-2.5">
-            <h2 className="font-bold text-2xl">All Categories</h2>
+            <h2 className="font-bold text-xl">All Categories</h2>
             <ul className="mt-1  ">
               {
                 categories.map(cat=>{

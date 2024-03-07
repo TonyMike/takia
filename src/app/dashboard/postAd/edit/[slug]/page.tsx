@@ -1,26 +1,26 @@
-
 import Image from "next/image";
 import { FaCheckDouble } from "react-icons/fa";
-import FormTitle from "../../../components/FormTitle";
-import Input from "../../../components/Input";
-import PriceInput from "../../../components/PriceInput";
-import Select from "../../../components/Select";
-import SubmnitButton from "../../../components/SubmitButton";
-import TextArea from "../../../components/TextArea";
+import FormTitle from "../../../../../components/FormTitle";
+import Select from "../../../../../components/Select";
+import Input from "../../../../../components/Input";
+import TextArea from "../../../../../components/TextArea";
+import PriceInput from "../../../../../components/PriceInput";
+import SubmnitButton from "../../../../../components/SubmitButton";
 
-const PostAd = () => {
-  const tips = [
-    'Embrace the charm of simplicity in your title and item description',
-    'Ensure that you’re sharing it under the right category, enhancing visibility',
-    'Accentuate your ad with eye-catching photo shots',
-    'Price it just right to invite quick offers',
-    'Give your item a final look-over before introducing it into the market'
-  ];
+const EditPostPage = () => {
+
+     const tips = [
+      'Embrace the charm of simplicity in your title and item description',
+      'Ensure that you’re sharing it under the right category, enhancing visibility',
+      'Accentuate your ad with eye-catching photo shots',
+      'Price it just right to invite quick offers',
+      'Give your item a final look-over before introducing it into the market'
+    ];
   return (
     <div className="flex justify-center gap-y-5  flex-col-reverse md:flex-row-reverse gap-x-10 item-center">
       <div className="space-y-5 ">
         <div className="w-full relative hidden md:block h-80">
-          <Image src={'/business.svg'} fill />
+          <Image src={'/business.svg'} alt="business image" fill />
         </div>
         <h3 className="font-bold text-xl">Sell now for free</h3>
         <p>
@@ -82,8 +82,7 @@ const PostAd = () => {
       </div>
     </div>
   );
-}
-// file:bg-violet-50 file:text-violet-700
-// hover:file:bg-violet-100
 
-export default PostAd;
+}
+
+export default EditPostPage

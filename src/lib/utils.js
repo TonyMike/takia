@@ -1,3 +1,5 @@
+
+
 const { default: mongoose } = require('mongoose')
 
 const connection = {}
@@ -14,3 +16,4 @@ export const connectToDb = async () => {
     throw new Error('Couldn\'t connect to Mongo', error)
   }
 }
+
