@@ -18,7 +18,7 @@ export default function Example() {
   const [selected, setSelected] = useState(people[0])
 
   return (
-    <div className=" w-72">
+    <div className=" max-w-72">
       <Listbox value={selected} onChange={setSelected}>
         <div className="relative mt-1">
           <Listbox.Button className="relative w-full cursor-default rounded-lg bg-white py-2 pl-3 pr-10 text-left shadow-takia focus:outline-none focus-visible:border-indigo-500 focus-visible:ring-2 focus-visible:ring-white/75 focus-visible:ring-offset-2 focus-visible:ring-offset-takia-orange/85 sm:text-sm">

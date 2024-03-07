@@ -15,7 +15,7 @@ const Card = () => {
       <div className="  space-y-1.5">
         <p className="font-semibold text-sm font-[montserrat]  ">N 14000</p>
         {/* description */}
-        <p className="font-semibold text-sm block overflow-hidden text-ellipsis  "> Sneakers for men in the color blue and white</p>
+        <p className="line-clamp-2 text-sm overflow-hidden text-ellipsis "> Sneakers for men in the color blue and white</p>
 
         <div className="flex  items-center space-x-3">
           <button className="bg-blue-500 text-white font-bold py-1 text-xs px-2 rounded">
@@ -25,7 +25,7 @@ const Card = () => {
           <button className="bg-red-500 text-white font-bold py-1 text-xs px-2 rounded">
             Delete
           </button>
-{/* 
+{/*
           <button className="bg-gray-500 text-white font-bold py-1 text-xs px-2 rounded">
             Close
           </button> */}

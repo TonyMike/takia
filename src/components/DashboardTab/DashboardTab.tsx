@@ -14,7 +14,7 @@ const DashboardTab = () => {
 
   const tabsContent : ReactElement[] = [
     <ProfileTab key="profile" />,
-    <MyAdverTab key="adver" />,
+    <MyAdverTab key="advert" />,
     <UpdatePasssword key="password" />
   ];
 
