@@ -29,7 +29,7 @@ const ProductImageView = ({ productId }) => {
       }
     }
     fetchProduct()
-  }, [])
+  }, [productId])
 
 
   return (

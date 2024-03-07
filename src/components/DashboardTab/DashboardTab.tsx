@@ -2,7 +2,7 @@
 import { Tab } from '@headlessui/react';
 import MyAdverTab from './MyAdvertTab';
 import ProfileTab from './ProfileTab';
-import UpdatePasssword from './UpdatePasssword';
+import UpdatePasssword from './UpdatePassword';
 import { ReactElement } from 'react';
 
 const DashboardTab = () => {
@@ -13,9 +13,9 @@ const DashboardTab = () => {
   ];
 
   const tabsContent : ReactElement[] = [
-    <ProfileTab />,
-    <MyAdverTab />,
-    <UpdatePasssword />
+    <ProfileTab key="profile" />,
+    <MyAdverTab key="adver" />,
+    <UpdatePasssword key="password" />
   ];
 
   return (
