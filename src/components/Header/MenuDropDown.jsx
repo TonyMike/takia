@@ -1,10 +1,9 @@
 "use client"
 
+import { Avatar } from "@nextui-org/react";
 import Link from "next/link";
 import { useState } from "react";
 import { BiLogOutCircle } from "react-icons/bi";
-// import { PiListBold } from "react-icons/pi";
-import Image from "next/image";
 import { handleLogout } from "../../lib/actions";
 const MenuDropDown = ({ user }) => {
   const [open, setOpen] = useState(false);
@@ -12,19 +11,24 @@ const MenuDropDown = ({ user }) => {
   return (
     <div className="relative " >
       {
-        user ? (
-          <div className="h-11 w-11 transition-all bg-transparent hover:bg-gray-200 rounded-full p-1 " onClick={() => setOpen(prev => !prev)}>
-            <div className=" bg-gray-100 h-full w-full relative rounded-full">
+        user?.profile_picture ?
+          (
+            <Avatar className="bg-red-500" name="Junior" />
+            // <div className="h-11 w-11 transition-all bg-transparent hover:bg-gray-200 rounded-full p-1 " onClick={() => setOpen(prev => !prev)}>
+            //   <div className=" bg-gray-100 h-full w-full relative rounded-full">
 
-              <Image src={user.image} alt={user?.name || user.firstName} fill objectFit="cover" className="rounded-full  cursor-pointer " />
+            //     <Image src={user.profile_picture} alt={user?.name || user.firstName} fill objectFit="cover" className="rounded-full  cursor-pointer " />
+            //   </div>
+            // </div>
 
-            </div>
-          </div>
-        ) : <div onClick={() => setOpen(prev => !prev)} className=" flex items-center gap-x-2 cursor-pointer rounded-full border border-gray-200 hover:bg-gray-50 px-2 py-2">
-          <p className="text-[10px]  leading-normal rounded-full bg-black text-white p-1 md:p-1.5 ">
-            {user?.name.charAt(0)}
-          </p>
-        </div>
+          ) :
+          <Avatar name="Junior" />
+
+          // <div onClick={() => setOpen(prev => !prev)} className="size-11 flex items-center gap-x-2 cursor-pointer rounded-full border border-gray-200 hover:bg-gray-50 px-2 py-2">
+          //   <p className="text-[10px]  leading-normal rounded-full bg-black text-white p-1 md:p-1.5 ">
+          //     {user?.firstName.charAt(0)}{user?.lastName.charAt(0)}
+          //   </p>
+          // </div>
       }
       <>
         {
