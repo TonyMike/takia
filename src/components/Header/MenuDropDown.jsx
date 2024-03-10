@@ -6,7 +6,6 @@ import { BiLogOutCircle } from "react-icons/bi";
 // import { PiListBold } from "react-icons/pi";
 import Image from "next/image";
 import { handleLogout } from "../../lib/actions";
-;
 const MenuDropDown = ({ user }) => {
   const [open, setOpen] = useState(false);
   // console.log(user)

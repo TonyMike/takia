@@ -1,24 +1,23 @@
-// export const categories = [
-//   'Phones & tablets',
-//   'Electronics',
-//   'Computers',
-//   'Fashion',
-//   'Sport & outdoor',
-//   'Arts',
-//   'Furnitures',
-//   'Beauty',
-//   'Home Appliances',
-//   'vehicles',
-//   'Properties',
-//   'Musical Instrument'
+import { categoryProp } from "../@types/types";
 
 
-// ];
-interface Category {
-  category: string;
-  icon: string;
-}
-export const categories: Category[] = [
+export const categoriesOptions: string[] = [
+  'Phones & tablets',
+  'Electronics',
+  'Computers',
+  'Fashion',
+  'Sport & outdoor',
+  'Arts',
+  'Furnitures',
+  'Beauty',
+  'Home Appliances',
+  'vehicles',
+  'Properties',
+  'Musical Instrument'
+];
+export const conditionOptions: string[] = ['New', 'Used'];
+
+export const categories:categoryProp[] = [
   {
     category: "phoness & tablets",
     icon: '/icons/smartphone.png'
@@ -89,3 +88,5 @@ export const getProduct = async (productId:{productId:Object}) => {
     }
   }
 }
+
+

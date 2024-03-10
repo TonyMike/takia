@@ -1,9 +1,9 @@
 import mongoose from "mongoose";
 const Schema = mongoose.Schema
 
-
 // ! add a business name, whatsapp contact line and facebook contact to the user table
-const UserSchema = new Schema(
+
+export const UserSchema = new Schema(
   {
     firstName: {
       type: String,
@@ -18,17 +18,15 @@ const UserSchema = new Schema(
       type: String,
       required: true
     },
-    image: {
-      type: String,
+    businessName: {
+      type: String
     },
     phoneNumber: {
       type: String,
     },
-    state: {
-      type: String
-    },
-    school: {
-      type: String
+    whatsapp: {
+      type: String,
+      default:'09164209289'
     },
     profile_picture: {
       type: String
@@ -43,7 +41,7 @@ const UserSchema = new Schema(
 )
 
 // ! add view count
-const ProductSchema = Schema(
+export const ProductSchema = new Schema(
   {
     title: {
       type: String,
@@ -53,21 +51,16 @@ const ProductSchema = Schema(
       type: String,
       required: true
     },
-    ownerEmail: String,
-    owner: {
-      type: Schema.Types.ObjectId,
-      ref: 'User'
-    },
     status: {
+      type: String,
+    },
+    description: {
       type: String,
       required: true
     },
-    description: {
-      type: String
-    },
     negotiable: {
       type: Boolean,
-      require: true
+      default: false
     },
     condition: {
       type: String,
@@ -78,29 +71,29 @@ const ProductSchema = Schema(
       required: true
     },
     images: {
-      type: [String]
-      // required: true
+      type: [String],
+      required: true
     },
     userId: {
       type: String,
       required: true,
     },
     slug: {
-      //! perform an operation on the slug to replace all empty string with -
       type: String,
       required: true,
-      unique: true
     },
-    productDetails: [
-      {
-        key: String,
-        value: String
-      }
-    ]
+    state: {
+      type: String,
+      required: true
+    },
+    school: {
+      type: String,
+      required: true
+    },
+    viewCount: {
+      type: Number,
+      default: 0
+    }
   },
   { timestamps: true }
 )
-
-
-export const User = mongoose.models.User || mongoose.model('User', UserSchema)
-export const Product = mongoose.models.Product || mongoose.model('Product', ProductSchema)

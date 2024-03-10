@@ -1,39 +1,33 @@
+import { connectToDb } from "./utils"
+
 export const authConfig = {
-  session: {
-    strategy: 'jwt'
-  },
-  pages: {
-    signIn: '/login'
-  },
   providers: [],
   callbacks: {
     async jwt({ token, user }) {
-      // console.log('token jwt from auth.config ', token)
       if (user) {
-        token.id = user.id,
-          token.isAdmin = user?._doc?.isAdmin
+        const { User } = await connectToDb()
+        const dbUser = await User.findOne({ email: user.email })
+        token.user = dbUser
       }
       return token
     },
-    async session({ session, token }) {
-      // console.log('session from auth.config ', session)
-      // console.log('token session from auth.config ', token)
 
-      if (token) {
-        session.user.id = token.id
-        session.user.isAdmin = token.isAdmin
-      }
+    async session({ session, token }) {
+      session.user = token.user
       return session
     },
     authorized({ auth, request }) {
-      const user = auth?.user
-      const isAdmin = request.nextUrl?.pathname.startsWith('/admin')
+      console.log("🚀 ~ authorized ~ auth:", auth)
+
+      const user = auth?.user;
+      const isAdmin = request.nextUrl?.pathname.startsWith('/admin');
       const isDashboardPage = request.nextUrl?.pathname.startsWith('/dashboard')
       const isOnLoginPage = request.nextUrl?.pathname.startsWith('/login')
       const isOnRegisterPage = request.nextUrl?.pathname.startsWith('/register')
 
       // ONLY ADMIN CAN REACH THE ADMIN DASHBOARD
       if (isAdmin && !user?.isAdmin) {
+        console.log('user is not admin')
         return false
       }
 
@@ -51,6 +45,7 @@ export const authConfig = {
       if (isOnRegisterPage && user) {
         return Response.redirect(new URL("/", request.nextUrl))
       }
+      // Existing authorized logic
 
       return true
     }

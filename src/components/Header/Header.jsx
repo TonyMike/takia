@@ -1,18 +1,19 @@
+import { getSession } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link";
-import { auth } from "../../lib/auth";
 import SellNow from "../SellNow";
 import SideBar from "../SideBar";
 import TkLink from "../TkLink";
 import MdSearch from "./MdSearch";
 import MenuDropDown from "./MenuDropDown";
 import Search from "./Search";
+import { auth } from "../../lib/auth";
 
 
 const Header = async () => {
   const session = await auth()
 
-  // console.log(session, 'from header')
+
   return (
     <header className="flex sticky top-0 z-10 justify-between items-center py-3 px-3 sm:px-20 md:px-12 xl:px-44 bg-white border-b border-gray-200">
       {/* logo */}
@@ -50,6 +51,8 @@ const Header = async () => {
     </header>
   );
 }
+
+
 
 export default Header;
 
