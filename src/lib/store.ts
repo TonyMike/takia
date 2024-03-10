@@ -19,7 +19,7 @@ const state = keys.map((key, index) => {
 })
 
 
-export const useStateStore = create<Stateprops>((set) => ({
+export const useStateStore = create<Stateprops>((set,get) => ({
   selected: '',
   updateSelectedState: (selected) => {
     set({ selected })
@@ -27,8 +27,9 @@ export const useStateStore = create<Stateprops>((set) => ({
   schools: [],
   allStates: keys,
   updateSchools: () => {
-    const selected = useStateStore.getState().selected
+    const selected = get().selected
     const l = state.filter(s => s.state.toLowerCase() === selected);
+    //@ts-ignore
     set({ schools: l[0]?.schools })
   }
 }))

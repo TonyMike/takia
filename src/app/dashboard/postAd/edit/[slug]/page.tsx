@@ -43,16 +43,16 @@ const EditPostPage = () => {
           <FormTitle title={'Edit Ads '} />
         </div>
         <form className="flex  flex-col gap-y-6 md:gap-8">
-          <Select label={'Category'} name={'category'} placeholder={'Select a category...'} />
+          <Select label={'Category'} name={'category'} options={[]}  />
           <Input label={'Ad Title'} placeholder={'Ad title'} name={'ad-title'} />
           <TextArea label={'Ad Description'} placeholder={'Describe your ad in a few sentences'} name={'ad-description'} />
           <div className="grid grid-cols-1 gap-y-6 md:grid-cols-2 md:gap-x-3">
             <PriceInput />
-            <Select label={'Condition'} name={'condition'} placeholder={'Select a condition...'} />
+            <Select label={'Condition'} name={'condition'} options={[]}  />
           </div>
           <div className="grid grid-cols-1 gap-y-6 md:grid-cols-2 md:gap-x-3">
-            <Select label={'Location'} name={'location'} placeholder={'Select a state'} />
-            <Select label={'School'} name={'school'} placeholder={'Select a school'} />
+            <Select label={'Location'} name={'location'}  options={[]} />
+            <Select label={'School'} name={'school'} options={[]} />
           </div>
           <div>
             <label className="block">
