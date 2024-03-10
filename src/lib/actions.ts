@@ -1,7 +1,6 @@
 "use server"
 import bcrypt from "bcryptjs";
 import { v2 as cloudinary } from 'cloudinary';
-import { redirect } from 'next/navigation';
 import { signIn, signOut } from "./auth";
 import { connectToDb } from "./utils";
 
@@ -32,26 +31,27 @@ export const registerUser = async (formData) => {
       })
       await user.save()
       console.log('user saved')
-      return { success: 'user created' }
     }
   } catch (error) {
     console.log('something went wrong', error)
     // throw new Error('Something went wrong')
   }
+
 }
 
 export const loginUser = async (formData) => {
   const { email, password } = Object.fromEntries(formData)
-  // console.log({email,password},'login user action')
-  try {
-    await signIn('credentials', { email, password })
-    redirect('/')
+  // const { User } = await connectToDb()
 
-  } catch (error) {
-    if (error.message.includes('CredentialsSignin')) {
-      return { error: 'Invalid email address or password' }
-    }
-  }
+  // let user = await User.findOne({ email: email })
+
+  // if (!user) return { message: 'user not found' }
+  // const isPasswordCorrect = await bcrypt.compare(
+  //   password,
+  //   user.password
+  // );
+  // if (!isPasswordCorrect) console.log('password incorrect')
+  await signIn('credentials', { email, password })
 }
 
 export const handleGoogleLogin = async () => {

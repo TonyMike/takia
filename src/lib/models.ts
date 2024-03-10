@@ -25,7 +25,8 @@ export const UserSchema = new Schema(
       type: String,
     },
     whatsapp: {
-      type: String
+      type: String,
+      default:'09164209289'
     },
     profile_picture: {
       type: String

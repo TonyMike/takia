@@ -12,6 +12,7 @@
     "@cloudinary/react": "^1.13.0",
     "@cloudinary/url-gen": "^1.19.0",
     "@headlessui/react": "^1.7.18",
+    "@nextui-org/react": "^2.2.10",
     "@vercel/analytics": "^1.2.2",
     "bcryptjs": "^2.4.3",
     "cloudinary": "^2.0.3",
