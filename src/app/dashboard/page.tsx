@@ -1,11 +1,13 @@
 import Image from "next/image";
 import DashboardTab from "../../components/DashboardTab/DashboardTab";
+// import deleteImageByUrl from '../../lib/actions';
 
 const Dashboard = async () => {
 
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+
       <div className="  px-4  sm:px-6 lg:px-8">
         <DashboardTab />
       </div>

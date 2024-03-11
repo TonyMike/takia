@@ -17,7 +17,7 @@ export const authConfig = {
       return session
     },
     authorized({ auth, request }) {
-      console.log("🚀 ~ authorized ~ auth:", auth)
+      // console.log("🚀 ~ authorized ~ auth:", auth)
 
       const user = auth?.user;
       const isAdmin = request.nextUrl?.pathname.startsWith('/admin');

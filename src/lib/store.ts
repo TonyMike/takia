@@ -19,10 +19,10 @@ const state = keys.map((key, index) => {
 })
 
 
-export const useStateStore = create<Stateprops>((set,get) => ({
+export const useStateStore = create<Stateprops>((set, get) => ({
   selected: '',
   updateSelectedState: (selected) => {
-    set({ selected })
+    set({ selected: selected })
   },
   schools: [],
   allStates: keys,

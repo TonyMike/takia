@@ -3,8 +3,10 @@ import Image from "next/image";
 import { FaCheckDouble } from "react-icons/fa";
 import FormTitle from "../../../components/FormTitle";
 import PostAdForm from "../../../components/PostAdForm";
+import { auth } from "../../../lib/auth";
 
-const PostAd = () => {
+const PostAd =async () => {
+  const session = await auth()
   const tips = [
     'Embrace the charm of simplicity in your title and item description',
     'Ensure that you’re sharing it under the right category, enhancing visibility',
@@ -14,6 +16,8 @@ const PostAd = () => {
   ];
   return (
     <div className="flex justify-center gap-y-5  flex-col-reverse md:flex-row-reverse gap-x-10 item-center">
+      {/* //@tsignore */}
+      {/* <pre>{session?.user?._id}</pre> */}
       <div className="space-y-5 ">
         <div className="w-full relative hidden md:block h-80">
           <Image src={'/business.svg'} alt="business image" fill />

@@ -33,8 +33,8 @@ const MenuDropDown = ({ user }) => {
           open && (
             <div className="absolute right-0 bg-white w-[180px] space-y-4 py-4  border border-gray-200 shadow-sm rounded-md top-12 ">
               <div className="space-y-1 border-b px-4 pb-4 border-gray-200">
-                <p className="text-sm">{user?.name}</p>
-                <p className="text-sm font-bold overflow-hidden text-ellipsis ">{user?.email ? user?.email : 'johndoe@example.com'}</p>
+                <p className="text-sm">{user?.firstName} { user?.lastName}</p>
+                <p className="text-sm font-bold overflow-hidden text-ellipsis ">{user?.email}</p>
               </div>
               <ul className="[&_li]:px-4   text-sm font-bold pb-4 border-b [&_li]:py-2 [&_li:hover]:bg-gray-100 border-gray-200">
 

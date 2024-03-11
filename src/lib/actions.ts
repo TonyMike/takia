@@ -1,7 +1,7 @@
 "use server"
 import bcrypt from "bcryptjs";
 import { v2 as cloudinary } from 'cloudinary';
-import { signIn, signOut } from "./auth";
+import { auth, signIn, signOut } from "./auth";
 import { connectToDb } from "./utils";
 
 cloudinary.config({
@@ -10,7 +10,6 @@ cloudinary.config({
   api_secret: process.env.CLOUDINARY_API_SECRET,
 });
 
-// const User=getConnection().model('User')
 
 export const registerUser = async (formData) => {
   const { firstName, lastName, email, password } = Object.fromEntries(formData)
@@ -61,13 +60,38 @@ export const handleLogout = async () => {
   await signOut()
 }
 
-// export const beforeSend = (event) => {
-//   if (event.url.includes('/admin')) {
-//     return null;
-//   }
-//   return event;
-// }
+// export const uploadtest = async (formData) => {
+//   const imageFiles = formData.getAll('files'); // Assuming 'files' is the name of the form field for multiple file uploads
 
+//   // Map each image file to its corresponding upload promise
+//   const uploadPromises = imageFiles.map(async (file) => {
+//     const arrayBuffer = await file.arrayBuffer();
+//     const buffer = new Uint8Array(arrayBuffer);
+
+//     return new Promise((resolve, reject) => {
+//       cloudinary.uploader.upload_stream(
+//         { resource_type: 'auto' },
+//         (error, result) => {
+//           if (error) {
+//             reject(error);
+//           } else {
+//             resolve(result.secure_url); // Resolve with the secure URL of the uploaded image
+//           }
+//         }
+//       ).end(buffer);
+//     });
+//   });
+
+//   try {
+//     // Wait for all uploads to complete
+//     const uploadResults = await Promise.all(uploadPromises);
+//     console.log('All images uploaded successfully:', uploadResults);
+//     return uploadResults; // Return an array of secure URLs for uploaded images
+//   } catch (error) {
+//     console.error('Error uploading images:', error);
+//     throw error; // Throw the error to be caught by the caller
+//   }
+// }
 
 export const uploadImage = async (formData) => {
   const imageFile = formData.get('file') as File
@@ -98,19 +122,90 @@ export const uploadImage = async (formData) => {
 }
 
 export const handlePostAds = async (formData) => {
-  const { category, title, description, price, condition, state, school, files } = Object.fromEntries(formData);
-  console.log({
-    category,
-    title,
-    description,
-    price,
-    condition,
-    state,
-    school,
-    files
+  const { User, Product } = await connectToDb()
+
+  const { category, title, description, price, condition, state, school, negotiable } = Object.fromEntries(formData);
+  const session = await auth()
+  const email = session.user.email
+  const genSlug = title.replaceAll(' ', '-')
+  const imageFiles = formData.getAll('files'); // Assuming 'files' is the name of the form field for multiple file uploads
+
+  // Map each image file to its corresponding upload promise
+  const uploadPromises = imageFiles.map(async (file) => {
+    const arrayBuffer = await file.arrayBuffer();
+    const buffer = new Uint8Array(arrayBuffer);
+
+    return new Promise((resolve, reject) => {
+      cloudinary.uploader.upload_stream(
+        { resource_type: 'auto' },
+        (error, result) => {
+          if (error) {
+            reject(error);
+          } else {
+            resolve(result.secure_url); // Resolve with the secure URL of the uploaded image
+          }
+        }
+      ).end(buffer);
+    });
   });
 
+  try {
 
+    const getUser = await User.findOne({ email })
+    const userId = getUser?._id.toString()
+    const userInfo = {
+      phoneNo: getUser.phoneNumber,
+      whatsapp: getUser.whatsapp,
+      profile_picture: getUser.profile_picture,
+      businessName: getUser.businessName
+    }
+    // Wait for all uploads to complete
+    const uploadResults = await Promise.all(uploadPromises);
+    const newProduct = await Product.create({
+      category,
+      title,
+      description,
+      price,
+      condition,
+      state,
+      school,
+      userId,
+      userInfo,
+      negotiable,
+      slug: genSlug,
+      images: uploadResults
+    })
+    await newProduct.save()
+    console.log('product saved successfully')
+
+    // console.log('All images uploaded successfully:', uploadResults);
+    // return uploadResults; // Return an array of secure URLs for uploaded images
+  } catch (error) {
+    console.error('Error uploading images:', error);
+    throw error; // Throw the error to be caught by the caller
+  }
+
+}
+ const deleteImageByUrl = async (imageUrl) => {
+  imageUrl = 'https://res.cloudinary.com/takia/image/upload/v1710154844/ejof4lalcbr2ju4ocpzb.png'
+  const parts = imageUrl.split('/');
+  const filename = parts.pop(); // Get the last part of the URL, which is the filename
+  const publicId = filename.split('.')[0];
+
+  try {
+    const result = await cloudinary.uploader.destroy('ejof4lalcbr2ju4ocpz');
+    console.log('Image deleted successfully:', result);
+    return result;
+  } catch (error) {
+    console.error('Error deleting image:', error);
+    throw error;
+  }
+};
+
+// Example usage:
+// const imageUrlToDelete = 'https://res.cloudinary.com/your_cloud_name/image/upload/image_public_id.jpg';
+// deleteImageByUrl(imageUrlToDelete);
+//! to update product
   // const {title, description, category, price} = Object.fromEntries(formData);
 
   // try{
@@ -131,6 +226,6 @@ export const handlePostAds = async (formData) => {
   // }catch(error){
   //   return {error: "Error posting ad"};
   // }
-}
+
 
 

@@ -26,7 +26,7 @@ export const UserSchema = new Schema(
     },
     whatsapp: {
       type: String,
-      default:'09164209289'
+      default: '09164209289'
     },
     profile_picture: {
       type: String
@@ -59,8 +59,8 @@ export const ProductSchema = new Schema(
       required: true
     },
     negotiable: {
-      type: Boolean,
-      default: false
+      type: String,
+      default: 'no'
     },
     condition: {
       type: String,
@@ -77,6 +77,12 @@ export const ProductSchema = new Schema(
     userId: {
       type: String,
       required: true,
+    },
+    userInfo: {
+      phoneNo: String,
+      profile_picture: String,
+      whatsapp: String,
+      businessName: String
     },
     slug: {
       type: String,

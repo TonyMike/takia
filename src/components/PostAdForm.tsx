@@ -16,13 +16,16 @@ interface FilePreview {
 }
 
 const PostAdForm = () => {
+
+
   const selected = useStateStore(state => state.selected)
   const updateSelectedState = useStateStore((state) => state.updateSelectedState)
   const updateSchools = useStateStore((state) => state.updateSchools)
   const allStates = useStateStore(state => state.allStates)
   const schools = useStateStore((state) => state.schools)
-
-
+  useEffect(() => {
+    updateSchools()
+  }, [selected])
 
   const [selectedFiles, setSelectedFiles] = useState<FilePreview[]>([]);
 
@@ -50,29 +53,35 @@ const PostAdForm = () => {
     });
   }
   const deleteImage = (fileToDelete: FilePreview) => {
-
     setSelectedFiles(prevFiles => {
       return prevFiles.filter(file => file !== fileToDelete);
     });
 
   }
-
-  // console.log(state)
   return (
     <>
-      {/* <pre>{selected}</pre> */}
-      <form action={handlePostAds} className="flex  flex-col gap-y-6 md:gap-8">
-        <Select options={categoriesOptions} label={'Category'} name='category' required={true} />
+      {/* action={handlePostAds} */}
+      <form action={handlePostAds} className="flex  flex-col gap-y-6 md:gap-4">
+        <div className="grid grid-cols-1 gap-y-6 md:grid-cols-2 md:gap-x-3">
+          <Select options={categoriesOptions} label={'Category'} name='category' required={true} />
+          <Select options={['yes', 'no']} label={'Negotiable'} name='negotiable' required={true} />
+        </div>
+
+
         <Input label={'Ad Title'} placeholder={'Ad title'} name={'title'} />
+
         <TextArea label={'Ad Description'} placeholder={'Describe your ad in a few sentences'} name={'description'} />
+
         <div className="grid grid-cols-1 gap-y-6 md:grid-cols-2 md:gap-x-3">
           <PriceInput />
           <Select label={'Condition'} name={'condition'} options={conditionOptions} />
         </div>
+
         <div className="grid grid-cols-1 gap-y-6 md:grid-cols-2 md:gap-x-3">
           <Select label={'State'} name={'state'} required={true} options={allStates} handleChange={handleChange} />
           <Select label={'School'} name={'school'} required={true} options={schools} />
         </div>
+
         <div>
           <div className="flex items-center space-x-3 mb-3 flex-wrap ">
             {
@@ -89,10 +98,10 @@ const PostAdForm = () => {
             )
 
           }
-
-          <label className="block">
-            <span className="sr-only">Choose profile photo</span>
-            <input type="file" name="files" required multiple min={3} onChange={handleFiles} accept="image/jpg,image/png" className="block w-full text-sm text-slate-500
+          <>
+            <label className="block">
+              <span className="sr-only">Choose profile photo</span>
+              <input type="file" name="files" required multiple min={3} onChange={handleFiles} accept="image/jpg,image/png" className="block w-full text-sm text-slate-500
               file:mr-4 file:py-2 file:px-4
               file:rounded-full file:border-0
               file:text-sm file:font-semibold
@@ -101,7 +110,10 @@ const PostAdForm = () => {
               hover:file:bg-orange-100
 
               "/>
-          </label>
+            </label>
+            <button>upload</button>
+          </>
+
           <span className="text-xs text-gray-400 block pl-3 mt-2">
             <span className="text-red-500 mr-1 ">*</span>
             Add at least 3 photos. Use a real image of your product, not catalogs

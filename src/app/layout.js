@@ -1,7 +1,9 @@
 // import { SessionProvider } from "next-auth/react"
+import { Analytics } from "@vercel/analytics/react";
 import Footer from "../components/Footer/Footer";
 import Header from "../components/Header/Header";
-import { Analytics } from "@vercel/analytics/react"
+//@ts-ignore
+import { Providers } from "./Providers";
 import "./globals.css";
 
 
@@ -14,9 +16,11 @@ export const metadata = {
 };
 export default function RootLayout({ children }) {
   return (
-      <html lang="en">
-        <body className="overflow-x-hidden  select-none ">
-          {/* <TakiaAnalytics /> */}
+    <html lang="en">
+      <body className="overflow-x-hidden  select-none ">
+        {/* <TakiaAnalytics /> */}
+        <Providers>
+
           <Analytics />
 
           <div className="flex flex-col  min-h-screen bg-cover " style={{ backgroundImage: 'url(/bg.png)' }} >
@@ -27,8 +31,9 @@ export default function RootLayout({ children }) {
 
             <Footer />
           </div>
-        </body>
-      </html>
+        </Providers>
+      </body>
+    </html>
 
   );
 }
