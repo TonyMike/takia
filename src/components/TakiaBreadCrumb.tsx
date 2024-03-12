@@ -1,14 +1,13 @@
-import { BreadcrumbItem, Breadcrumbs } from "@nextui-org/react";
 
 const TakiaBreadCrumb = () => {
   return (
-    <Breadcrumbs>
-      <BreadcrumbItem>Home</BreadcrumbItem>
-      <BreadcrumbItem>Music</BreadcrumbItem>
-      <BreadcrumbItem>Artist</BreadcrumbItem>
-      <BreadcrumbItem>Album</BreadcrumbItem>
-      <BreadcrumbItem>Song</BreadcrumbItem>
-    </Breadcrumbs>
+    <div className="flex text-sm [&>*]:cursor-pointer capitalize text-gray-600 space-x-2">
+      <p>Home </p>
+      <p>{'>'}</p>
+      <p>electronics </p>
+      <p>{'>'}</p>
+      <p className="text-black">Iphone 14 pro max</p>
+    </div>
   );
 }
 

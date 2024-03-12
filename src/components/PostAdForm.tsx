@@ -25,7 +25,7 @@ const PostAdForm = () => {
   const schools = useStateStore((state) => state.schools)
   useEffect(() => {
     updateSchools()
-  }, [selected])
+  }, [selected,updateSchools])
 
   const [selectedFiles, setSelectedFiles] = useState<FilePreview[]>([]);
 

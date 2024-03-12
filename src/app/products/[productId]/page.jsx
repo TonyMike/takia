@@ -10,7 +10,6 @@ import ProductImageView from "../../../components/ProductImageView";
 import ShowContact from "../../../components/ShowContact";
 import { auth } from "../../../lib/auth";
 
-import { BreadcrumbItem, Breadcrumbs } from "@nextui-org/react";
 import RelatedProductList from "../../../components/RelatedProductList";
 import TakiaBreadCrumb from "../../../components/TakiaBreadCrumb";
 import { getProduct, safetyTips } from "../../../lib/data";
@@ -25,9 +24,9 @@ const Product = async ({ params }) => {
   return (
     <div className="space-y-14">
       <div className="space-y-5">
-        {/* breadcrumbs */}
-        <div>home</div>
-        {/* <TakiaBreadCrumb /> */}
+        <div className="mb-5">
+          <TakiaBreadCrumb />
+        </div>
 
         <div className="  space-y-2 md:space-y-0 grid  grid-cols-1 lg:grid-cols-6 xl:grid-cols-7 gap-x-5">
 

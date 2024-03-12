@@ -60,38 +60,7 @@ export const handleLogout = async () => {
   await signOut()
 }
 
-// export const uploadtest = async (formData) => {
-//   const imageFiles = formData.getAll('files'); // Assuming 'files' is the name of the form field for multiple file uploads
 
-//   // Map each image file to its corresponding upload promise
-//   const uploadPromises = imageFiles.map(async (file) => {
-//     const arrayBuffer = await file.arrayBuffer();
-//     const buffer = new Uint8Array(arrayBuffer);
-
-//     return new Promise((resolve, reject) => {
-//       cloudinary.uploader.upload_stream(
-//         { resource_type: 'auto' },
-//         (error, result) => {
-//           if (error) {
-//             reject(error);
-//           } else {
-//             resolve(result.secure_url); // Resolve with the secure URL of the uploaded image
-//           }
-//         }
-//       ).end(buffer);
-//     });
-//   });
-
-//   try {
-//     // Wait for all uploads to complete
-//     const uploadResults = await Promise.all(uploadPromises);
-//     console.log('All images uploaded successfully:', uploadResults);
-//     return uploadResults; // Return an array of secure URLs for uploaded images
-//   } catch (error) {
-//     console.error('Error uploading images:', error);
-//     throw error; // Throw the error to be caught by the caller
-//   }
-// }
 
 export const uploadImage = async (formData) => {
   const imageFile = formData.get('file') as File
