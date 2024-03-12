@@ -10,7 +10,13 @@ const MyAdverTab = () => {
       </div>
       <div className='mt-5  space-y-4'>
         <CategoryDropDown />
-        <div className='flex flex-wrap gap-4'>
+        <div className=' h-80 overflow-y-scroll space-y-4'>
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+          <Card />
+          <Card />
           <Card />
           <Card />
           <Card />

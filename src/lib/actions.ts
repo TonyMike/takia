@@ -155,7 +155,7 @@ export const handlePostAds = async (formData) => {
   }
 
 }
- const deleteImageByUrl = async (imageUrl) => {
+const deleteImageByUrl = async (imageUrl) => {
   imageUrl = 'https://res.cloudinary.com/takia/image/upload/v1710154844/ejof4lalcbr2ju4ocpzb.png'
   const parts = imageUrl.split('/');
   const filename = parts.pop(); // Get the last part of the URL, which is the filename
@@ -170,6 +170,11 @@ export const handlePostAds = async (formData) => {
     throw error;
   }
 };
+
+export const updateUserProfile = async (formData) => {
+  const { file, email, firstName, lastName, whatsapp, businessName, phone } = Object.fromEntries(formData)
+  console.log({ file, email, firstName, lastName, whatsapp, businessName, phone });
+}
 
 // Example usage:
 // const imageUrlToDelete = 'https://res.cloudinary.com/your_cloud_name/image/upload/image_public_id.jpg';

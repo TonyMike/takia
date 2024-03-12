@@ -23,6 +23,7 @@ const PostAdForm = () => {
   const updateSchools = useStateStore((state) => state.updateSchools)
   const allStates = useStateStore(state => state.allStates)
   const schools = useStateStore((state) => state.schools)
+  
   useEffect(() => {
     updateSchools()
   }, [selected,updateSchools])

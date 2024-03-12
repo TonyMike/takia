@@ -12,8 +12,6 @@ import { auth } from "../../lib/auth";
 
 const Header = async () => {
   const session = await auth()
-
-
   return (
     <header className="flex sticky top-0 z-10 justify-between items-center py-[7px] lg:py-3 px-3 sm:px-20 md:px-12 xl:px-44 bg-white border-b border-gray-200">
       {/* logo */}
