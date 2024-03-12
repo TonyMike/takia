@@ -3,8 +3,8 @@ import { Analytics } from "@vercel/analytics/react";
 import Footer from "../components/Footer/Footer";
 import Header from "../components/Header/Header";
 //@ts-ignore
-import { Providers } from "./Providers";
 import "./globals.css";
+import Providers from "./providers";
 
 
 export const metadata = {

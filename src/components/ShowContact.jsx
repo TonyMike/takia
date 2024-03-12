@@ -1,8 +1,12 @@
 'use client'
+import { Snippet } from "@nextui-org/react";
 import { useState } from "react";
+import { BiCopy } from "react-icons/bi";
 import { FaCheckCircle, FaExclamation, FaPhoneAlt } from "react-icons/fa";
 
-
+export const CopyIcon = () => {
+  return <button className="px-3 py-1 border border-green-400 rounded-md">copy</button>
+}
 
 const ShowContact = () => {
   const [open, setOpen] = useState(false)
@@ -19,13 +23,18 @@ const ShowContact = () => {
       {
         open && (
           <div className=" bg-white  z-[2] shadow-lg absolute top-11 w-full rounded-md">
-            <div className="flex justify-between px-4  items-center border-b border-gray-300 py-3">
-              <div className="flex gap-x-3 items-start">
-                <FaPhoneAlt className="" />
-                <span className="text-sm">09164209289</span>
-              </div>
-              <button className="rounded-md text-xs p-1 px-3 border border-takia-orange">Copy</button>
-            </div>
+
+            <Snippet
+              className=" py-1 px-5 bg-white rounded-none flex w-full  border-b border-b-gray-300"
+              // variant="bordered"
+              copyIcon={<BiCopy />}
+              checkIcon={<FaCheckCircle />}
+              hideSymbol={true}
+            >
+
+              {/* <FaPhoneAlt className="inline" /> */}
+              <button>081362829202</button>
+            </Snippet>
             <div className="py-3 space-y-2 px-4">
               {
                 showTip.map((tip, index) => (

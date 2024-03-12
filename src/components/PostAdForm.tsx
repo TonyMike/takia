@@ -111,7 +111,6 @@ const PostAdForm = () => {
 
               "/>
             </label>
-            <button>upload</button>
           </>
 
           <span className="text-xs text-gray-400 block pl-3 mt-2">

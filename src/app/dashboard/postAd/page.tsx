@@ -16,8 +16,7 @@ const PostAd =async () => {
   ];
   return (
     <div className="flex justify-center gap-y-5  flex-col-reverse md:flex-row-reverse gap-x-10 item-center">
-      {/* //@tsignore */}
-      {/* <pre>{session?.user?._id}</pre> */}
+  
       <div className="space-y-5 ">
         <div className="w-full relative hidden md:block h-80">
           <Image src={'/business.svg'} alt="business image" fill />
