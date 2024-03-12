@@ -1,5 +1,5 @@
 'use client'
-import { Snippet } from "@nextui-org/react";
+import { Popover, PopoverContent, PopoverTrigger, Snippet } from "@nextui-org/react";
 import { useState } from "react";
 import { BiCopy } from "react-icons/bi";
 import { FaCheckCircle, FaExclamation, FaPhoneAlt } from "react-icons/fa";
@@ -16,13 +16,16 @@ const ShowContact = () => {
   const showTip = ["Avoid making advance payments, even for delivery purposes.", "Let the seller know that you found their contact information on Takia to provide context about your inquiry."]
   return (
     <div className="relative">
-      <button onClick={toggle} className="bg-gray-900 hover:bg-opacity-90 space-x-3 rounded-md shadow-md flex items-center justify-center text-white py-2  w-full">
-        <FaPhoneAlt className="" />
-        <span>Show Phone No</span>
-      </button>
-      {
-        open && (
-          <div className=" bg-white  z-[2] shadow-lg absolute top-11 w-full rounded-md">
+      <Popover placement='bottom'  className="border-none outline-none" >
+        <PopoverTrigger>
+          <button className="bg-gray-900 space-x-3 rounded-md shadow-md flex items-center justify-center text-white py-2  w-full">
+            <FaPhoneAlt className="" />
+            <span>Show Phone No</span>
+          </button>
+        </PopoverTrigger>
+
+        <PopoverContent className=" w-[280px] bg-white p-0 ">
+          <div className=" bg-white  z-[2] shadow-lg  top-11 rounded-md">
 
             <Snippet
               className=" py-1 px-5 bg-white rounded-none flex w-full  border-b border-b-gray-300"
@@ -43,8 +46,10 @@ const ShowContact = () => {
               }
             </div>
           </div>
-        )
-      }
+        </PopoverContent>
+
+
+      </Popover>
     </div>
   );
 }

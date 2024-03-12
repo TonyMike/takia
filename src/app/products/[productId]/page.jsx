@@ -56,7 +56,7 @@ const Product = async ({ params }) => {
               {/* product description */}
               <div className="mt-4">
                 <h4 className="text-base font-bold">Description:</h4>
-                <p className="text-xs text-gray-700 my-1 text-justify font-[montserrat] ">PlayStation 5 Controller Skin High quality vinyl with air channel adhesive for easy bubble free install & mess free removal Pressure sensitive
+                <p className="text-sm text-gray-700 my-1 text-justify font-[montserrat] ">PlayStation 5 Controller Skin High quality vinyl with air channel adhesive for easy bubble free install & mess free removal Pressure sensitive
                   PlayStation 5 Controller Skin High quality vinyl with air channel adhesive for easy bubble free install & mess free removal Pressure sensitive.
                   .</p>
               </div>
@@ -76,7 +76,7 @@ const Product = async ({ params }) => {
 
                 <div className="flex gap-x-3 flex-wrap items-start">
                   <div className="min-h-[50px] min-w-[50px] relative bg-white  overflow-hidden rounded-full">
-                    <Image fill src={session?.user?.image} className="rounded-full" alt={session?.user?.name} />
+                    <Image fill src={session?.user?.profile_picture} className="rounded-full" alt={session?.user?.name} />
                   </div>
 
                   <div>
@@ -123,8 +123,6 @@ const Product = async ({ params }) => {
         </div>
 
       </div>
-
-      <TakiaBreadCrumb />
       {/* related products */}
       <div className=" w-full">
         <div>
