@@ -13,7 +13,7 @@ const Card = () => {
         </div>
       </div>
       <div className=" flex-col flex justify-evenly space-y-1.5">
-        <p className="font-semibold text-sm font-[montserrat]  ">N 14000</p>
+        <p className="font-semibold text-sm font-[montserrat]  "> ₦ 14000</p>
         {/* description */}
         <p className="line-clamp-2 text-sm overflow-hidden text-ellipsis ">Iphone 14 pro max</p>
 

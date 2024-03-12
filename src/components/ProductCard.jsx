@@ -13,7 +13,7 @@ const ProductCard = ({ name, image, price, imageCount }) => {
         <p className="text-ellipsis text-gray-700 w-full text-sm overflow-hidden whitespace-nowrap block text-nowrap">{name}</p>
         <div className="flex justify-between gap-y-1 flex-wrap">
           <p className="font-bold text-sm font-[montserrat] leading-normal  text-takia-orange ">
-            N 14,0000
+             ₦ 14,0000
           </p>
           <div className="flex space-x-0.5 justify-ed items-center">
             <ImLocation2 className="text-xs text-green-600" />
