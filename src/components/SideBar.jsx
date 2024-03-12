@@ -39,14 +39,14 @@ const SideBar = () => {
               <IoMdClose size={23} className="text-gray-800" />
             </div>
           </div>
-          <div className="px-5 py-2.5">
-            <h2 className="font-bold text-xl">All Categories</h2>
+          <div className=" py-2.5">
+            <h2 className="font-bold px-5 text-xl">All Categories</h2>
             <ul className="mt-1  ">
               {
                 categories.map(cat=>{
                   return (
                     <li
-                      className="py-1.5 capitalize flex gap-x-2 px-4 hover:text-white items-center text-[15px] hover:bg-takia-orange "
+                      className="py-1.5 capitalize flex gap-x-2 px-5 hover:text-white items-center text-[15px] hover:bg-takia-orange "
                       key={cat.category}
                     >
                       <Image  src={cat.icon} alt={cat.category} width={20} height={20} />

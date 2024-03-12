@@ -14,16 +14,16 @@ const ShowContact = () => {
   const showTip = ["Avoid making advance payments, even for delivery purposes.", "Let the seller know that you found their contact information on Takia to provide context about your inquiry."]
   return (
     // <div className="relative">
-    <Popover  >
+    <Popover className='relative'  >
       <Popover.Button className='w-full border-none outline-none '>
-        <button className="bg-gray-900 space-x-3 border-none outline-none rounded-md shadow-md flex items-center justify-center text-white py-2  w-full">
+        <div className="bg-gray-900 space-x-3 border-none outline-none rounded-md shadow-md flex items-center justify-center text-white py-2  w-full">
           <FaPhoneAlt className="" />
           <span>Show Phone No</span>
-        </button>
+        </div>
       </Popover.Button>
 
-      <Popover.Panel className=" w-full mt-1 b-white p-0 ">
-        <div className=" bg-white  z-[2] shadow-lg  top-11 rounded-md">
+      <Popover.Panel className=" w-full bg-white z-[2] absolute mt-1 b-white p-0 ">
+        <div className=" bg-white  shadow-lg  top-11 rounded-md">
 
           <Snippet
             className=" py-1 px-5 bg-white rounded-none flex w-full  border-b border-b-gray-300"

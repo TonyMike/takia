@@ -31,21 +31,21 @@ const MenuDropDown = ({ user }) => {
         }
       </Popover.Button>
       <Popover.Panel className=" absolute right-0 p-0">
-        <div className=" right-0 bg-white w-[180px] space-y-4 py-4  border border-gray-200 shadow-sm rounded-md  ">
-          <div className="space-y-1 border-b px-4 pb-4 border-gray-200">
+        <div className=" right-0 bg-white w-[180px]   border border-gray-200 shadow-sm rounded-md  ">
+          <div className="space-y-1 border-b px-4 py-3  border-gray-200">
             <p className="text-sm">{user?.firstName} {user?.lastName}</p>
             <p className="text-sm font-bold overflow-hidden text-ellipsis ">{user?.email}</p>
           </div>
-          <ul className="[&_li]:px-4   text-sm font-bold pb-4 border-b [&_li]:py-2 [&_li:hover]:bg-gray-100 border-gray-200">
+          <div className="[&_*]:px-4   text-sm font-bold  border-b [&_*]:py-2 [&_*:hover]:bg-gray-100 border-gray-200">
 
-            <li>
-              <Link href={'/dashboard'}>Dashboard</Link>
-            </li>
-            <li className="hover:bg-gray-100  ">My Profile</li>
-            <li>Messages</li>
-          </ul>
+            <Link className="block" href={'/dashboard'}>Dashboard</Link>
+
+            <Link className="text-takia-orange block md:hidden" href={'/dashboard/postAd'}>Sell Now</Link>
+
+
+          </div>
           <form action={handleLogout}>
-            <button className="px-4 flex items-center gap-x-2 text-sm font-bold">
+            <button className="px-4 flex py-2.5 items-center  gap-x-2 text-sm font-bold">
               <BiLogOutCircle size={18} />
               <span>Logout</span>
             </button>

@@ -12,10 +12,10 @@ const Card = () => {
           <span>5</span>
         </div>
       </div>
-      <div className="  space-y-1.5">
+      <div className=" flex-col flex justify-evenly space-y-1.5">
         <p className="font-semibold text-sm font-[montserrat]  ">N 14000</p>
         {/* description */}
-        <p className="line-clamp-2 text-sm overflow-hidden text-ellipsis "> Sneakers for men in the color blue and white</p>
+        <p className="line-clamp-2 text-sm overflow-hidden text-ellipsis ">Iphone 14 pro max</p>
 
         <div className="flex  items-center space-x-3">
           <button className="bg-blue-500 text-white font-bold py-1 text-xs px-2 rounded">
