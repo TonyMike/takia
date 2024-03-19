@@ -11,7 +11,7 @@ const MenuDropDown = ({ user }) => {
   return (
     <Popover className="relative">
       <Popover.Button className='border-none relative outline-none'>
-        <Avatar showFallback isBordered  className="uppercase mt-2 text-xs bg-black text-white " size="sm" src={user?.profile_picture} name={`${user?.firstName.charAt(0)}${user?.lastName.charAt(0)}`} alt="avatar" />
+        <Avatar isBordered className="uppercase mt-2 text-x bg-black text-white " size="sm" name={`${user?.firstName.charAt(0)}${user?.lastName.charAt(0)}`} src={user?.profile_picture} alt="avatar" />
       </Popover.Button>
       <Popover.Panel className=" absolute right-0 p-0">
         <div className=" right-0 bg-white w-[180px]   border border-gray-200 shadow-sm rounded-md  ">

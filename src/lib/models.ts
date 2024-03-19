@@ -21,6 +21,10 @@ export const UserSchema = new Schema(
     businessName: {
       type: String
     },
+    isGoogleUser: {
+      type: Boolean,
+      default: false
+    },
     phoneNumber: {
       type: String,
     },

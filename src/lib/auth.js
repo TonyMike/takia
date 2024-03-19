@@ -1,9 +1,9 @@
+import bcrypt from "bcryptjs";
 import NextAuth from "next-auth";
 import CredentialsProvider from 'next-auth/providers/credentials';
 import Google from "next-auth/providers/google";
 import { authConfig } from "./auth.config";
 import { connectToDb } from "./utils";
-import bcrypt from "bcryptjs";
 
 
 export const { handlers: { GET, POST }, auth, signIn, signOut } = NextAuth({
@@ -54,16 +54,19 @@ export const { handlers: { GET, POST }, auth, signIn, signOut } = NextAuth({
         try {
           const e_user = await User.findOne({ email: profile.email });
           let role = false;
+
           if (!e_user) {
             if (profile.email === 'tee.jhay1@gmail.com') {
               role = true
             }
+
             const new_user = await User.create({
               firstName: profile.given_name,
               lastName: profile.family_name,
               email: profile.email,
               profile_picture: profile.picture,
-              isAdmin: role
+              isAdmin: role,
+              isGoogleUser: true
             })
             console.log('User created')
             await new_user.save();
