@@ -4,3 +4,4 @@
 //! remove twitter from social media connect
 //! pass dynamic data to breadcrumb
 //! call lanre to help u with updating the store tiwht the auth() data
+//! work on revaliadating path

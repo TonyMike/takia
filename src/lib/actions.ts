@@ -12,7 +12,7 @@ cloudinary.config({
 });
 
 
-const deleteImageByUrl = async (imageUrl) => {
+const deleteImageByUrl = async (imageUrl: string) => {
   const parts = imageUrl.split('/');
   const filename = parts.pop(); // Get the last part of the URL, which is the filename
   const publicId = filename.split('.')[0];
@@ -57,16 +57,7 @@ export const registerUser = async (formData) => {
 
 export const loginUser = async (formData) => {
   const { email, password } = Object.fromEntries(formData)
-  // const { User } = await connectToDb()
-
-  // let user = await User.findOne({ email: email })
-
-  // if (!user) return { message: 'user not found' }
-  // const isPasswordCorrect = await bcrypt.compare(
-  //   password,
-  //   user.password
-  // );
-  // if (!isPasswordCorrect) console.log('password incorrect')
+ 
   await signIn('credentials', { email, password })
 }
 
@@ -211,4 +202,28 @@ export async function updateUserProfile(formData) {
 
 
 
+export const updateUserPassword = async (formData) => {
+  const session = await auth()
+  const email = session.user.email
+  const { oldPassword, newPassword } = Object.fromEntries(formData);
 
+  const { User } = await connectToDb();
+
+
+  const salt = await bcrypt.genSalt(10);
+  const hashedPassword = await bcrypt.hash(newPassword, salt);
+
+  const updatedUser = await User.findOneAndUpdate(
+    { email, password: await bcrypt.hash(oldPassword, 10) }, // Match user by email and old hashed password
+    { password: hashedPassword }, // Update password to new hashed password
+    { new: true } // Return the updated document
+  );
+
+  if (!updatedUser) {
+    throw new Error('Incorrect email or password');
+  }
+
+  return {
+    message: 'Password updated successfully'
+  }
+}

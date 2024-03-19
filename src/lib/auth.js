@@ -52,7 +52,7 @@ export const { handlers: { GET, POST }, auth, signIn, signOut } = NextAuth({
       if (account.provider === 'google') {
         const { User } = await connectToDb()
         try {
-          const e_user = await User.findOne({ email: profile.email });
+          const e_user = await User.findOne({ email: profile.email }).maxTimeMS(60000)
           let role = false;
 
           if (!e_user) {

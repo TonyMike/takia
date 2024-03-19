@@ -1,9 +1,12 @@
+"use client"
+import { updateUserPassword } from "../../lib/actions";
+// import { auth } from "../../lib/auth";
 import Input from "../Input";
 import SubmitButton from "../SubmitButton";
 
 const UpdatePasssword = () => {
   return (
-    <div className="bg-white rounded-xl shadow-takia space-y-4 p-4 md:p-8">
+    <form action={updateUserPassword} className="bg-white rounded-xl shadow-takia space-y-4 p-4 md:p-8">
       <div className="flex items-center space-x-2">
         <span className="text-red-500">*</span>
         <p className="text-gray-500 text-sm">Google users do not need to change their passwords</p>
@@ -16,7 +19,7 @@ const UpdatePasssword = () => {
       <div className="flex justify-center">
         <SubmitButton text="update" />
       </div>
-    </div>
+    </form>
 
 
   );

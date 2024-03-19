@@ -2,7 +2,6 @@
 import { Avatar } from "@nextui-org/react";
 import { useState } from "react";
 import { updateUserProfile } from "../../lib/actions";
-import { useAuthStore } from "../../lib/store";
 import Input from "../Input";
 import SubmitButton from "../SubmitButton";
 
@@ -12,8 +11,6 @@ const ProfileTab = () => {
     // @ts-ignore
     setImg(URL.createObjectURL(e.target.files[0]))
   }
-  const user = useAuthStore((state) => state.user)
-  console.log("🚀 ~ ProfileTab ~ user:", user)
   return (
     <form action={updateUserProfile} className="bg-white rounded-xl shadow-takia space-y-4 p-4 md:p-8">
       <div className="flex items-center space-x-2">
