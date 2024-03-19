@@ -23,10 +23,10 @@ const PostAdForm = () => {
   const updateSchools = useStateStore((state) => state.updateSchools)
   const allStates = useStateStore(state => state.allStates)
   const schools = useStateStore((state) => state.schools)
-  
+
   useEffect(() => {
     updateSchools()
-  }, [selected,updateSchools])
+  }, [selected, updateSchools])
 
   const [selectedFiles, setSelectedFiles] = useState<FilePreview[]>([]);
 
@@ -101,7 +101,7 @@ const PostAdForm = () => {
           }
           <>
             <label className="block">
-              <span className="sr-only">Choose profile photo</span>
+              <span className="sr-only">Choose product pictures</span>
               <input type="file" name="files" required multiple min={3} onChange={handleFiles} accept="image/jpg,image/png" className="block w-full text-sm text-slate-500
               file:mr-4 file:py-2 file:px-4
               file:rounded-full file:border-0

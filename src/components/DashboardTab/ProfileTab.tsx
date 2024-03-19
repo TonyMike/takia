@@ -18,7 +18,7 @@ const ProfileTab = () => {
     <form action={updateUserProfile} className="bg-white rounded-xl shadow-takia space-y-4 p-4 md:p-8">
       <div className="flex items-center space-x-2">
         <Avatar className="bg-takia-orange text-white/80" size="lg" src={img} />
-        <label className="block border-takia-orange cursor-pointer" >
+        <label className="flex-1 border-takia-orange cursor-pointer" >
           <span className="sr-only">Choose profile photo</span>
           <input onChange={handlefile} type="file" name="file" required={false} accept="image/jpg,image/png" className="block w-full text-sm text-slate-500
               file:mr-4 file:py-2 file:px-4
