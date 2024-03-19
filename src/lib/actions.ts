@@ -62,8 +62,8 @@ export const handleLogout = async () => {
 
 
 
-export const uploadImage = async (formData) => {
-  const imageFile = formData.get('file') as File
+export const uploadImage = async (file) => {
+  const imageFile = file
   const arrayBuffer = await imageFile.arrayBuffer();
   const buffer = new Uint8Array(arrayBuffer);
 
@@ -85,8 +85,10 @@ export const uploadImage = async (formData) => {
       }
     ).end(buffer);
   });
-  //@ts-ignore
+  // @ts-ignore
   console.log(imageResult.secure_url);
+  // @ts-ignore
+  return imageResult.secure_url;
 
 }
 
@@ -162,7 +164,7 @@ const deleteImageByUrl = async (imageUrl) => {
   const publicId = filename.split('.')[0];
 
   try {
-    const result = await cloudinary.uploader.destroy('ejof4lalcbr2ju4ocpz');
+    const result = await cloudinary.uploader.destroy(publicId);
     console.log('Image deleted successfully:', result);
     return result;
   } catch (error) {
@@ -173,33 +175,30 @@ const deleteImageByUrl = async (imageUrl) => {
 
 export const updateUserProfile = async (formData) => {
   const { file, email, firstName, lastName, whatsapp, businessName, phone } = Object.fromEntries(formData)
-  console.log({ file, email, firstName, lastName, whatsapp, businessName, phone });
+
+  const { User } = await connectToDb()
+  const session = await auth()
+  //@ts-ignore
+  const userId = session.user._id.toString()
+  const getUser = await User.findOne({ _id: userId }).maxTimeMS(10000)
+  let image = ''
+
+  try {
+    if (file.size && getUser.profile_picture.includes('googleusercontent')) {
+      console.log('upload new file')
+      return
+    }
+    if (file.size && !getUser.profile_picture.includes('googleusercontent')) {
+      console.log('image from db deleted and upload new image')
+      return
+    }
+
+  } catch (error) {
+    console.log("🚀 ~ updateUserProfile ~ error:", error)
+
+  }
 }
 
-// Example usage:
-// const imageUrlToDelete = 'https://res.cloudinary.com/your_cloud_name/image/upload/image_public_id.jpg';
-// deleteImageByUrl(imageUrlToDelete);
-//! to update product
-  // const {title, description, category, price} = Object.fromEntries(formData);
-
-  // try{
-  //   await User.findOneAndUpdate({_id: userId}, {
-  //     $push: {
-  //       ads: {
-  //         title,
-  //         description,
-  //         category,
-  //         price,
-  //         image: imageResult.secure_url
-  //       }
-  //     }
-  //   });
-
-  //   return {success: "Ad posted successfully"};
-
-  // }catch(error){
-  //   return {error: "Error posting ad"};
-  // }
 
 
 

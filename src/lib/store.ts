@@ -8,6 +8,11 @@ interface Stateprops {
   schools: string[],
   updateSchools: () => void
 }
+interface UserProps {
+  user: any;
+  // updateUser: () => void
+}
+
 const keys = getState.flatMap(key => Object.keys(key));
 const values = getState.flatMap(value => Object.values(value))
 const state = keys.map((key, index) => {
@@ -35,4 +40,9 @@ export const useStateStore = create<Stateprops>((set, get) => ({
 }))
 
 
+
+export const useAuthStore = create<UserProps>((set) => ({
+  user: {},
+
+}))
 

@@ -29,7 +29,8 @@ export const UserSchema = new Schema(
       default: '09164209289'
     },
     profile_picture: {
-      type: String
+      type: String,
+      default: ''
     },
     isAdmin: {
       type: Boolean,

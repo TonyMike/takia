@@ -1,11 +1,14 @@
-// app/providers.tsx
-'use client'
-import { NextUIProvider } from '@nextui-org/react'
+"use client"
 
-export default function Providers({ children }: { children: React.ReactNode }) {
+import { useEffect } from "react";
+import { useAuthStore } from "../lib/store";
+
+
+export default function AuthProvider({ children }: { children: React.ReactNode }) {
+
   return (
-    <NextUIProvider>
+    <>
       {children}
-    </NextUIProvider>
+    </>
   )
 }
