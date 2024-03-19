@@ -14,7 +14,7 @@ const UpdatePasssword = () => {
       <Input placeholder="*********" label="Old Password" name="oldPassword" type="password" />
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-1  lg:grid-cols-1 xl:grid-cols-2 gap-4">
         <Input placeholder="*********" label="New Password" name="newPassword" type="password" />
-        <Input placeholder="*********" label="Confirm Password" name="confirmNewPassword" type="password" />
+        {/* <Input placeholder="*********" label="Confirm Password" name="confirmNewPassword" type="password" /> */}
       </div>
       <div className="flex justify-center">
         <SubmitButton text="update" />

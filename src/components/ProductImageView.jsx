@@ -33,7 +33,8 @@ const ProductImageView = ({ productId }) => {
 
 
   return (
-    <div className="grid grid-cols-1 gap-2 md:gap-4 md:grid-cols-6 md:grid-flow-col-dense">
+    <div className="grid grid-cols-1 gap-4   ">
+      {/* {grid grid-cols-1 gap-2 md:gap-4 md:grid-cols-6 md:grid-flow-col-dense} */}
       <div className="h-[300px] md:order-last bg-gray-100  rounded-md shadow-lg  md:col-span-5  md:h-[450px] xl:h-[550px] ">
         <Swiper
           modules={[FreeMode, Navigation, Thumbs]}
@@ -59,22 +60,23 @@ const ProductImageView = ({ productId }) => {
           ...
         </Swiper>
       </div>
-      <div className=" md:h-[450px] xl:h-[550px] ">
+
+      <div className=" md:h-[450px] xl:h-[550px]  ">
         <Swiper
           className="w-full  rounded-md h-full"
           onSwiper={setThumbsSwiper}
-          spaceBetween={`${direction === 'horizontal' ? 10 : 15} `}
-          // spaceBetween={10}
+          // spaceBetween={`${direction === 'horizontal' ? 10 : 15} `}
+          spaceBetween={10}
           slidesPerView={4}
-          direction={direction}
+          // direction={direction}
           freeMode={true}
           watchSlidesProgress={true}
           modules={[FreeMode, Navigation, Thumbs]}
         >
           {
             product?.images.map((x, i) => {
-              return <SwiperSlide className="h-full    " key={i} >
-                <div className="h-full overflow-hidden rounded-md   w-full  relative  ">
+              return <SwiperSlide className="h-full  " key={i} >
+                <div className="h-full overflow-hidden rounded-md  w-full  relative  ">
                   <Image src={x} alt={product?.title.slice(0, 6)} className="object-cover" layout="fill" />
                 </div>
               </SwiperSlide>

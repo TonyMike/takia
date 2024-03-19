@@ -57,7 +57,7 @@ export const registerUser = async (formData) => {
 
 export const loginUser = async (formData) => {
   const { email, password } = Object.fromEntries(formData)
- 
+
   await signIn('credentials', { email, password })
 }
 
@@ -170,12 +170,14 @@ export const handlePostAds = async (formData) => {
 export async function updateUserProfile(formData) {
   "use server"
   const { file, email, firstName, lastName, whatsapp, businessName, phone } = Object.fromEntries(formData)
-
+  console.log({
+    file, email, firstName, lastName, whatsapp, businessName, phone
+  })
   const { User } = await connectToDb()
   const session = await auth()
   //@ts-ignore
   const userId = session.user._id.toString()
-  const getUser = await User.findOne({ _id: userId }).maxTimeMS(10000)
+  const getUser = await User.findById({ _id: userId }).maxTimeMS(10000)
   let image = undefined
 
 
@@ -193,8 +195,8 @@ export async function updateUserProfile(formData) {
     console.log('image uploaded new image', image)
 
   }
-  const updateUser = await User.findOneAndUpdate({ _id: userId }, { firstName, lastName, email, whatsapp, businessName, phone, profile_picture: image }, { new: true })
-  console.log(updateUser)
+  const updateUser = await User.findByIdAndUpdate({ _id: userId }, { firstName, lastName, email, whatsapp, businessName, phoneNumber: phone, profile_picture: image }, { new: true })
+  console.log('update user profile', updateUser)
   await updateUser.save()
 
   revalidatePath('/dashboard')
@@ -203,26 +205,27 @@ export async function updateUserProfile(formData) {
 
 
 export const updateUserPassword = async (formData) => {
-  const session = await auth()
-  const email = session.user.email
   const { oldPassword, newPassword } = Object.fromEntries(formData);
 
+  const session = await auth()
+  //@ts-ignore
+  const userId = session.user._id.toString()
   const { User } = await connectToDb();
+  const user = await User.findById({ _id: userId });
 
-
+  const isMatch = await bcrypt.compare(oldPassword, user.password);
+  if (!isMatch) {
+    throw new Error('password');
+  }
   const salt = await bcrypt.genSalt(10);
   const hashedPassword = await bcrypt.hash(newPassword, salt);
 
-  const updatedUser = await User.findOneAndUpdate(
-    { email, password: await bcrypt.hash(oldPassword, 10) }, // Match user by email and old hashed password
+  const updatedUser = await User.findByIdAndUpdate(
+    { _id: userId }, // Match user by email and old hashed password
     { password: hashedPassword }, // Update password to new hashed password
     { new: true } // Return the updated document
   );
-
-  if (!updatedUser) {
-    throw new Error('Incorrect email or password');
-  }
-
+  await updatedUser.save()
   return {
     message: 'Password updated successfully'
   }

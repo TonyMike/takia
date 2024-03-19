@@ -33,7 +33,7 @@ const Product = async ({ params }) => {
           <div className="lg:col-span-4  xl:col-span-5">
             <ProductImageView productId={productId} />
             {/* //! more information on the product */}
-            <div className="mt-3 space-y-3 py-5 px-6 rounded-md shadow-lg">
+            <div className="mt-3 hidden space-y-3 py-5 px-6 rounded-md shadow-lg">
               <div className="flex gap-y-2 flex-col-reverse md:flex-col  ">
                 <h2 className="text-lg md:text-xl capitalize text-gray-900 font-bold">{product?.title}</h2>
                 <div className="flex items-center justify-between md:justify-start md:space-x-5 space-x-2">
@@ -76,7 +76,7 @@ const Product = async ({ params }) => {
 
                 <div className="flex gap-x-3 flex-wrap items-start">
                   <div className="min-h-[50px] min-w-[50px] relative bg-white  overflow-hidden rounded-full">
-                    <Image fill src={session?.user?.profile_picture}  className="rounded-full object-cover" alt={session?.user?.name} />
+                    <Image fill src={session?.user?.profile_picture} className="rounded-full object-cover" alt={session?.user?.name} />
                   </div>
 
                   <div>
