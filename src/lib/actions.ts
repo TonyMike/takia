@@ -188,24 +188,24 @@ export async function updateUserProfile(formData) {
   let image = undefined
 
 
-    if (file.size && getUser.profile_picture.includes('googleusercontent')) {
-      image = await uploadImage(file)
-      console.log('image uploaded and removed the google img', image)
+  if (file.size && getUser.profile_picture.includes('googleusercontent')) {
+    image = await uploadImage(file)
+    console.log('image uploaded and removed the google img', image)
 
+  }
+  if (file.size && !getUser.profile_picture.includes('googleusercontent')) {
+    if (getUser.profile_picture) {
+      const d_img = await deleteImageByUrl(getUser.profile_picture)
+      console.log('image deleted', d_img)
     }
-    if (file.size && !getUser.profile_picture.includes('googleusercontent')) {
-      if (getUser.profile_picture) {
-        const d_img = await deleteImageByUrl(getUser.profile_picture)
-        console.log('image deleted', d_img)
-      }
-      image = await uploadImage(file)
-      console.log('image uploaded new image', image)
+    image = await uploadImage(file)
+    console.log('image uploaded new image', image)
 
-    }
-    const updateUser = await User.findOneAndUpdate({ _id: userId }, { firstName, lastName, email, whatsapp, businessName, phone, profile_picture: image }, { new: true })
-    console.log(updateUser)
-    await updateUser.save()
- 
+  }
+  const updateUser = await User.findOneAndUpdate({ _id: userId }, { firstName, lastName, email, whatsapp, businessName, phone, profile_picture: image }, { new: true })
+  console.log(updateUser)
+  await updateUser.save()
+
   revalidatePath('/dashboard')
 }
 

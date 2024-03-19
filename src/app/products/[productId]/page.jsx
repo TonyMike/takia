@@ -76,7 +76,7 @@ const Product = async ({ params }) => {
 
                 <div className="flex gap-x-3 flex-wrap items-start">
                   <div className="min-h-[50px] min-w-[50px] relative bg-white  overflow-hidden rounded-full">
-                    <Image fill src={session?.user?.profile_picture} className="rounded-full" alt={session?.user?.name} />
+                    <Image fill src={session?.user?.profile_picture}  className="rounded-full object-cover" alt={session?.user?.name} />
                   </div>
 
                   <div>

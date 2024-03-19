@@ -51,7 +51,7 @@ const ProductImageView = ({ productId }) => {
             product?.images.map((image, index) => {
               return <SwiperSlide key={index}>
                 <div className=" overflow-hidden text-sm  rounded-md  relative w-full h-full ">
-                  <Image src={image} layout="fill" className="object-contain" alt={product?.title.slice(0, 6)} />
+                  <Image src={image} layout="fill" className="object-cover" alt={product?.title.slice(0, 6)} />
                 </div>
               </SwiperSlide>
             })
@@ -75,7 +75,7 @@ const ProductImageView = ({ productId }) => {
             product?.images.map((x, i) => {
               return <SwiperSlide className="h-full    " key={i} >
                 <div className="h-full overflow-hidden rounded-md   w-full  relative  ">
-                  <Image src={x} alt={product?.title.slice(0, 6)} className="object-contain" layout="fill" />
+                  <Image src={x} alt={product?.title.slice(0, 6)} className="object-cover" layout="fill" />
                 </div>
               </SwiperSlide>
             })
