@@ -1,13 +1,12 @@
-import { getSession } from "next-auth/react";
 import Image from "next/image";
 import Link from "next/link";
+import { auth } from "../../lib/auth";
 import SellNow from "../SellNow";
 import SideBar from "../SideBar";
 import TkLink from "../TkLink";
 import MdSearch from "./MdSearch";
 import MenuDropDown from "./MenuDropDown";
 import Search from "./Search";
-import { auth } from "../../lib/auth";
 
 
 const Header = async () => {
@@ -27,14 +26,14 @@ const Header = async () => {
         <Search />
       </div>
 
-      <nav className="flex items-center gap-x-3">
+      <nav className="flex items-center md:gap-x-4 gap-x-2">
         <div className="hidden md:block">
           <SellNow />
         </div>
         <MdSearch />
         {
           !session?.user && (
-            <div className="flex gap-x-2">
+            <div className="flex md:gap-x-2 gap-x-2">
               <TkLink href='/login' title='Log in' mode='light' />
               <TkLink href='/register' title='Sign up' mode='dark' />
             </div>
