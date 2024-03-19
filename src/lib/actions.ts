@@ -1,6 +1,7 @@
 "use server"
 import bcrypt from "bcryptjs";
 import { v2 as cloudinary } from 'cloudinary';
+import { revalidatePath } from "next/cache";
 import { auth, signIn, signOut } from "./auth";
 import { connectToDb } from "./utils";
 
@@ -11,8 +12,23 @@ cloudinary.config({
 });
 
 
+const deleteImageByUrl = async (imageUrl) => {
+  const parts = imageUrl.split('/');
+  const filename = parts.pop(); // Get the last part of the URL, which is the filename
+  const publicId = filename.split('.')[0];
+
+  try {
+    const result = await cloudinary.uploader.destroy(publicId);
+    console.log('Image deleted successfully:', result);
+    return result;
+  } catch (error) {
+    console.error('Error deleting image:', error);
+    throw error;
+  }
+};
+
 export const registerUser = async (formData) => {
-  const { firstName, lastName, email, password } = Object.fromEntries(formData)
+  const { firstName, lastName, email, password, phone } = Object.fromEntries(formData)
   try {
     const { User } = await connectToDb()
 
@@ -26,7 +42,8 @@ export const registerUser = async (formData) => {
         firstName,
         lastName,
         email,
-        password: hashedPassword
+        password: hashedPassword,
+        phoneNumber: phone,
       })
       await user.save()
       console.log('user saved')
@@ -62,7 +79,7 @@ export const handleLogout = async () => {
 
 
 
-export const uploadImage = async (file) => {
+const uploadImage = async (file) => {
   const imageFile = file
   const arrayBuffer = await imageFile.arrayBuffer();
   const buffer = new Uint8Array(arrayBuffer);
@@ -157,23 +174,10 @@ export const handlePostAds = async (formData) => {
   }
 
 }
-const deleteImageByUrl = async (imageUrl) => {
-  imageUrl = 'https://res.cloudinary.com/takia/image/upload/v1710154844/ejof4lalcbr2ju4ocpzb.png'
-  const parts = imageUrl.split('/');
-  const filename = parts.pop(); // Get the last part of the URL, which is the filename
-  const publicId = filename.split('.')[0];
 
-  try {
-    const result = await cloudinary.uploader.destroy(publicId);
-    console.log('Image deleted successfully:', result);
-    return result;
-  } catch (error) {
-    console.error('Error deleting image:', error);
-    throw error;
-  }
-};
 
-export const updateUserProfile = async (formData) => {
+export async function updateUserProfile(formData) {
+  "use server"
   const { file, email, firstName, lastName, whatsapp, businessName, phone } = Object.fromEntries(formData)
 
   const { User } = await connectToDb()
@@ -181,22 +185,28 @@ export const updateUserProfile = async (formData) => {
   //@ts-ignore
   const userId = session.user._id.toString()
   const getUser = await User.findOne({ _id: userId }).maxTimeMS(10000)
-  let image = ''
+  let image = undefined
 
-  try {
+
     if (file.size && getUser.profile_picture.includes('googleusercontent')) {
-      console.log('upload new file')
-      return
+      image = await uploadImage(file)
+      console.log('image uploaded and removed the google img', image)
+
     }
     if (file.size && !getUser.profile_picture.includes('googleusercontent')) {
-      console.log('image from db deleted and upload new image')
-      return
+      if (getUser.profile_picture) {
+        const d_img = await deleteImageByUrl(getUser.profile_picture)
+        console.log('image deleted', d_img)
+      }
+      image = await uploadImage(file)
+      console.log('image uploaded new image', image)
+
     }
-
-  } catch (error) {
-    console.log("🚀 ~ updateUserProfile ~ error:", error)
-
-  }
+    const updateUser = await User.findOneAndUpdate({ _id: userId }, { firstName, lastName, email, whatsapp, businessName, phone, profile_picture: image }, { new: true })
+    console.log(updateUser)
+    await updateUser.save()
+ 
+  revalidatePath('/dashboard')
 }
 
 
