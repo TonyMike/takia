@@ -129,8 +129,8 @@ export const handlePostAds = async (formData) => {
   });
 
   try {
-
-    const getUser = await User.findOne({ email })
+    //@ts-ignore
+    const getUser = await User.findById({ _id: session.user._id.toString() })
     const userId = getUser?._id.toString()
     const userInfo = {
       phoneNo: getUser.phoneNumber,

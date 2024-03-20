@@ -1,9 +1,10 @@
 import mongoose from "mongoose";
+import { UserProps } from "../@types/types";
 const Schema = mongoose.Schema
 
 // ! add a business name, whatsapp contact line and facebook contact to the user table
 
-export const UserSchema = new Schema(
+export const UserSchema = new Schema<UserProps>(
   {
     firstName: {
       type: String,
