@@ -25,9 +25,9 @@ const ProductsList = () => {
 
   return (
     <div>
-      <div className="mb-5 flex justify-center ">
+      {/* <div className="mb-5 flex justify-center ">
         <FormTitle title={'Latest Products'} />
-      </div>
+      </div> */}
       <div className=" grid grid-cols-2 grow gap-4  sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4  ">
         {
           products.map((x, i) => {

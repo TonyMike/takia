@@ -2,8 +2,11 @@ import bcrypt from "bcryptjs";
 import NextAuth from "next-auth";
 import CredentialsProvider from 'next-auth/providers/credentials';
 import Google from "next-auth/providers/google";
+import { UserProps } from "../@types/types";
 import { authConfig } from "./auth.config";
-import { connectToDb } from "./utils";
+// import { User } from "./models";
+import { connectDb } from "./utils";
+import { getUserModel, initializeModels } from "./models";
 
 
 export const { handlers: { GET, POST }, auth, signIn, signOut } = NextAuth({
@@ -22,9 +25,13 @@ export const { handlers: { GET, POST }, auth, signIn, signOut } = NextAuth({
     CredentialsProvider({
       async authorize(credentials) {
 
-        const { User } = await connectToDb()
+        // const { User } = await connectToDb()
+        await connectDb()
+        initializeModels();
 
-        let user = await User.findOne({ email: credentials.email })
+        // Access the User model
+        const User = getUserModel();
+        let user: UserProps | null = await User.findOne({ email: credentials.email })
 
         if (!user) throw new Error('user not found in db')
         const isPasswordCorrect = await bcrypt.compare(
@@ -47,12 +54,18 @@ export const { handlers: { GET, POST }, auth, signIn, signOut } = NextAuth({
   ],
 
   callbacks: {
+    //@ts-ignore
     async signIn({ account, profile, }) {
 
       if (account.provider === 'google') {
-        const { User } = await connectToDb()
+        // const { User } = await connectToDb()
+        await connectDb()
+        initializeModels();
+
+        // Access the User model
+        const User = getUserModel();
         try {
-          const e_user = await User.findOne({ email: profile.email }).maxTimeMS(60000)
+          const e_user: UserProps | null = await User.findOne({ email: profile.email }).maxTimeMS(60000)
           let role = false;
 
           if (!e_user) {

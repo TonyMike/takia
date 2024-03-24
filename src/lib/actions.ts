@@ -2,8 +2,10 @@
 import bcrypt from "bcryptjs";
 import { v2 as cloudinary } from 'cloudinary';
 import { revalidatePath } from "next/cache";
+import { UserProps } from "../@types/types";
 import { auth, signIn, signOut } from "./auth";
-import { connectToDb } from "./utils";
+import { getProductModel, getUserModel, initializeModels, initializeProductModel, } from "./models";
+import { connectDb } from "./utils";
 
 cloudinary.config({
   cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
@@ -30,9 +32,13 @@ const deleteImageByUrl = async (imageUrl: string) => {
 export const registerUser = async (formData) => {
   const { firstName, lastName, email, password, phone } = Object.fromEntries(formData)
   try {
-    const { User } = await connectToDb()
+    await connectDb()
+    initializeModels();
 
-    const exist = await User.findOne({ email })
+    // Access the User model
+    const User = getUserModel();
+
+    const exist: UserProps | null = await User.findOne({ email })
     if (exist) {
       throw new Error('User with this email already exist')
     } else {
@@ -101,7 +107,11 @@ const uploadImage = async (file) => {
 }
 
 export const handlePostAds = async (formData) => {
-  const { User, Product } = await connectToDb()
+  await connectDb()
+  initializeProductModel();
+
+  // Access the User model
+  const Product = getProductModel()
 
   const { category, title, description, price, condition, state, school, negotiable } = Object.fromEntries(formData);
   const session = await auth()
@@ -130,7 +140,7 @@ export const handlePostAds = async (formData) => {
 
   try {
     //@ts-ignore
-    const getUser = await User.findById({ _id: session.user._id.toString() })
+    const getUser: UserProps | null = await User.findById({ _id: session.user._id.toString() })
     const userId = getUser?._id.toString()
     const userInfo = {
       phoneNo: getUser.phoneNumber,
@@ -173,11 +183,16 @@ export async function updateUserProfile(formData) {
   console.log({
     file, email, firstName, lastName, whatsapp, businessName, phone
   })
-  const { User } = await connectToDb()
+  // const { User } = await connectToDb()
+  await connectDb()
+  initializeModels();
+
+  // Access the User model
+  const User = getUserModel();
   const session = await auth()
   //@ts-ignore
   const userId = session.user._id.toString()
-  const getUser = await User.findById({ _id: userId }).maxTimeMS(10000)
+  const getUser: UserProps | null = await User.findById({ _id: userId }).maxTimeMS(10000)
   let image = undefined
 
 
@@ -210,8 +225,11 @@ export const updateUserPassword = async (formData) => {
   const session = await auth()
   //@ts-ignore
   const userId = session.user._id.toString()
-  const { User } = await connectToDb();
-  const user = await User.findById({ _id: userId });
+  // const { User } = await connectToDb();
+  await connectDb();
+  initializeModels();
+  const User = getUserModel();
+  const user: UserProps | null = await User.findById({ _id: userId });
 
   const isMatch = await bcrypt.compare(oldPassword, user.password);
   if (!isMatch) {
@@ -229,4 +247,42 @@ export const updateUserPassword = async (formData) => {
   return {
     message: 'Password updated successfully'
   }
+}
+
+export const searchProduct = async ({ query }) => {
+
+  await connectDb();
+  initializeProductModel();
+  const Product = getProductModel()
+
+  if (!query.trim()) {
+    console.log('No search query provided');
+    return false
+  }
+
+
+  const findProductBySearchQuery = await Product.aggregate([
+    {
+      $match: {
+        $or: [
+          { title: { $regex: query, $options: 'i' } },
+          { description: { $regex: query, $options: 'i' } },
+          { category: { $regex: query, $options: 'i' } },
+          { school: { $regex: query, $options: 'i' } },
+          { price: { $regex: query, $options: 'i' } },
+          { condition: { $regex: query, $options: 'i' } },
+        ]
+      }
+    }
+  ]);
+
+  if (!findProductBySearchQuery.length) {
+    console.log('No products found for query:', query);
+    return false
+  }
+
+
+  console.log("🚀 ~ searchProduct ~ findProductBySearchQuery:", findProductBySearchQuery)
+
+  return findProductBySearchQuery
 }

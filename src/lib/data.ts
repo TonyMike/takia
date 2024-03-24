@@ -40,7 +40,7 @@ export const categories:categoryProp[] = [
   },
   {
     category: "arts",
-    icon: '',
+    icon: '/icons/arts.png',
   },
   {
     category: "Furnitures",

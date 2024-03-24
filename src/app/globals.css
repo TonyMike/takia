@@ -36,3 +36,32 @@ background: #e0e0e0;
 box-shadow:  20px 20px 60px #bebebe,
              -20px -20px 60px #ffffff;
 }
+
+.custom-shape-divider-top-1711270847 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+    transform: rotate(180deg);
+}
+
+.custom-shape-divider-top-1711270847 svg {
+    position: relative;
+    display: block;
+    width: calc(100% + 1.3px);
+    height: 150px;
+}
+
+.custom-shape-divider-top-1711270847 .shape-fill {
+    fill: #FFFFFF;
+}
+
+/** For mobile devices **/
+@media (max-width: 767px) {
+    .custom-shape-divider-top-1711270847 svg {
+        width: calc(142% + 1.3px);
+        height: 93px;
+    }
+}

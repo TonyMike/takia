@@ -1,12 +1,19 @@
-import { connectToDb } from "./utils"
-
+// import { User } from "./models"
+import { connectDb } from "./utils"
+import { UserProps } from "../@types/types"
+import { getUserModel, initializeModels } from "./models";
 export const authConfig = {
   providers: [],
   callbacks: {
     async jwt({ token, user }) {
       if (user) {
-        const { User } = await connectToDb()
-        const dbUser = await User.findOne({ email: user.email })
+        // const { User } = await connectToDb()
+        await connectDb()
+        initializeModels();
+
+        // Access the User model
+        const User = getUserModel();
+        const dbUser: UserProps = await User.findOne({ email: user.email })
         token.user = dbUser
       }
       return token
