@@ -1,8 +1,6 @@
-import React from "react";
 
 import Image from "next/image";
 import { categories } from "../lib/data";
-import FormTitle from "./FormTitle";
 
 
 const Categories = () => {
@@ -20,7 +18,7 @@ const Categories = () => {
         {categories.map((cat) => {
           return (
             <li
-              className="py-1.5 flex capitalize gap-x-2 px-4 hover:text-white items-center text-[15px] hover:bg-takia-orange "
+              className="py-1.5 flex cursor-pointer capitalize gap-x-2 px-4 hover:text-white items-center text-[15px] hover:bg-takia-orange "
               key={cat.category}
             >
               <Image src={cat.icon} alt={cat.category} width={20} height={20} />

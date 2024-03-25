@@ -255,34 +255,36 @@ export const searchProduct = async ({ query }) => {
   initializeProductModel();
   const Product = getProductModel()
 
-  if (!query.trim()) {
-    console.log('No search query provided');
-    return false
-  }
+  // if (!query.trim()) {
+  //   console.log('No search query provided');
+  //   return
+  // }
 
-
-  const findProductBySearchQuery = await Product.aggregate([
-    {
-      $match: {
-        $or: [
-          { title: { $regex: query, $options: 'i' } },
-          { description: { $regex: query, $options: 'i' } },
-          { category: { $regex: query, $options: 'i' } },
-          { school: { $regex: query, $options: 'i' } },
-          { price: { $regex: query, $options: 'i' } },
-          { condition: { $regex: query, $options: 'i' } },
-        ]
+  try {
+    const findProductBySearchQuery = await Product.aggregate([
+      {
+        $match: {
+          $or: [
+            { title: { $regex: query, $options: 'i' } },
+            { description: { $regex: query, $options: 'i' } },
+            { category: { $regex: query, $options: 'i' } },
+            { school: { $regex: query, $options: 'i' } },
+            { price: { $regex: query, $options: 'i' } },
+            { condition: { $regex: query, $options: 'i' } },
+          ]
+        }
       }
+    ]);
+    if (!findProductBySearchQuery.length) {
+      console.log('No products found for query:', query);
+      return false
     }
-  ]);
-
-  if (!findProductBySearchQuery.length) {
-    console.log('No products found for query:', query);
+    return findProductBySearchQuery
+  } catch (e) {
+    console.error('Error searching products:', e);
     return false
   }
 
 
-  console.log("🚀 ~ searchProduct ~ findProductBySearchQuery:", findProductBySearchQuery)
 
-  return findProductBySearchQuery
 }
