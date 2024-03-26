@@ -1,6 +1,9 @@
 "use client"
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
+import { useEffect, useRef, useState } from "react";
+import { useFormState } from 'react-dom';
+import { ToastContainer, toast } from "react-toastify";
 import { handlePostAds } from "../lib/actions";
 import { categoriesOptions, conditionOptions } from "../lib/data";
 import { useStateStore } from "../lib/store";
@@ -15,14 +18,31 @@ interface FilePreview {
   preview: string;
 }
 
+const initialState = {
+  message: '',
+  productId: '',
+}
 const PostAdForm = () => {
-
+  const [state, formAction] = useFormState(handlePostAds, initialState)
+  const formRef = useRef<HTMLFormElement>(null);
+  const router = useRouter();
 
   const selected = useStateStore(state => state.selected)
   const updateSelectedState = useStateStore((state) => state.updateSelectedState)
   const updateSchools = useStateStore((state) => state.updateSchools)
   const allStates = useStateStore(state => state.allStates)
   const schools = useStateStore((state) => state.schools)
+  useEffect(() => {
+    if (state.message) {
+      if (state.message.includes('successfully')) {
+        toast.success(state.message)
+        router.push(`/product/${state.productId}`)
+        formRef.current.reset();
+      } else {
+        toast.error(state.message)
+      }
+    }
+  }, [state.message]);
 
   useEffect(() => {
     updateSchools()
@@ -60,9 +80,10 @@ const PostAdForm = () => {
 
   }
   return (
-    <>
+    <div className="relative">
+
       {/* action={handlePostAds} */}
-      <form action={handlePostAds} className="flex  flex-col gap-y-6 md:gap-4">
+      <form ref={formRef} action={formAction} className="flex  flex-col gap-y-6 md:gap-4">
         <div className="grid grid-cols-1 gap-y-6 md:grid-cols-2 md:gap-x-3">
           <Select options={categoriesOptions} label={'Category'} name='category' required={true} />
           <Select options={['yes', 'no']} label={'Negotiable'} name='negotiable' required={true} />
@@ -125,9 +146,11 @@ const PostAdForm = () => {
         </div>
         <SubmitButton />
 
+
       </form>
-      { }
-    </>
+      {/* { } */}
+      <ToastContainer />
+    </div>
   );
 }
 

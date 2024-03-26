@@ -4,6 +4,7 @@ import Footer from "../components/Footer/Footer";
 import Header from "../components/Header/Header";
 import Provider from './Provider';
 import "./globals.css";
+import 'react-toastify/dist/ReactToastify.css';
 
 export const metadata = {
   title: "Takia | Student Market",

@@ -107,7 +107,7 @@ const uploadImage = async (file) => {
 
 }
 
-export const handlePostAds = async (formData) => {
+export const handlePostAds = async (prevState, formData) => {
   await connectDb()
   initializeProductModel();
   initializeModels();
@@ -168,18 +168,28 @@ export const handlePostAds = async (formData) => {
       images: uploadResults
     })
     await newProduct.save()
-    console.log('product saved successfully')
+
+    console.log('Product posted successfully')
+    return {
+      message: 'Product posted successfully 👍',
+      productId: newProduct._id.toString()
+    }
 
 
 
     // console.log('All images uploaded successfully:', uploadResults);
     // return uploadResults; // Return an array of secure URLs for uploaded images
   } catch (error) {
-    console.error('Error uploading images:', error);
-    throw error; // Throw the error to be caught by the caller
-  }
+    console.error('Error uploading products:', error.message);
+    return {
+      message: 'Error uploading product:' + error.message + '😞',
+      productId: ''
+    };
 
+  }
 }
+
+
 
 
 export async function updateUserProfile(formData) {

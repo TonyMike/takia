@@ -3,9 +3,9 @@ import Image from "next/image";
 import { FaCheckDouble } from "react-icons/fa";
 import FormTitle from "../../../components/FormTitle";
 import PostAdForm from "../../../components/PostAdForm";
-import { auth } from "../../../lib/auth";
+import { handlePostAds } from "../../../lib/actions";
 
-const PostAd =async () => {
+const PostAd = async () => {
   const tips = [
     'Embrace the charm of simplicity in your title and item description',
     'Ensure that you’re sharing it under the right category, enhancing visibility',
