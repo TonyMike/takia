@@ -19,7 +19,7 @@ export const connectDb = async () => {
     }
 
     await mongoose.connect('mongodb+srv://teejhay1:teejhay1@lacoco.pi0lyke.mongodb.net/takia?retryWrites=true&w=majority', {
-      useNewUrlParser: true,
+      
       useUnifiedTopology: true,
     });
 

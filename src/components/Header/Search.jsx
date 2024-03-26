@@ -29,7 +29,7 @@ const Search = () => {
     return () => {
       window.removeEventListener('keypdown', handleKeyPress);
     };
-  }, [query]);
+  }, [query,router]);
 
   const handleSearch = () => {
     if (query.trim()) {
@@ -41,7 +41,7 @@ const Search = () => {
 
 
   return (
-    <div className="flex   items-center  overflow-hidden  focus:ring-0 focus-within:border-takia-orange/95   border  text-base w-full max-w-lg h-12 rounded-full 
+    <div className="flex   items-center  overflow-hidden  focus:ring-0 focus-within:border-takia-orange/95   border  text-base w-full max-w-lg h-12 rounded-full
     border-gray-200  py-2 pr-10 ">
 
       <button onClick={handleSearch}

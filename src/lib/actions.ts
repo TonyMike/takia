@@ -146,7 +146,8 @@ export const handlePostAds = async (formData) => {
       profile_picture: getUser.profile_picture,
       businessName: getUser.businessName
     }
-    if(!userId) {
+    if (!userId) {
+      console.log('User not found')
       throw new Error('User not found')
     }
     // Wait for all uploads to complete

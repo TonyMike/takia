@@ -11,7 +11,7 @@ const Select = ({ label, name, options, required = false , handleChange}: select
           {label} {required && <span className="text-red-600">*</span>}
         </label>
       </div>
-      <select name={name} id="" required={required} onChange={handleChange} className="pl-3 appearance-none capitalize py-2.5 text-sm text-gray-800 outline-none min-w-0 border-none rounded-full " style={{ boxShadow: 'inset 6px 6px 6px 0 #cbced1, inset -6px -6px 6px 0 #ffffff ' }}>
+      <select name={name} id=""  required={required} onChange={handleChange} className="pl-3 appearance-none capitalize py-2.5 text-sm text-gray-800 outline-none min-w-0 border-none rounded-full " style={{ boxShadow: 'inset 6px 6px 6px 0 #cbced1, inset -6px -6px 6px 0 #ffffff ' }}>
         <option value="">Select an option</option>
         {options?.map(option => <option key={option} value={option.toLowerCase()}>{option}</option>)}
 

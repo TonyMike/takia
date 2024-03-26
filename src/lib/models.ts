@@ -29,6 +29,7 @@ const UserSchema = new Schema<UserProps>(
     },
     phoneNumber: {
       type: String,
+      default: ''
     },
     whatsapp: {
       type: String,
