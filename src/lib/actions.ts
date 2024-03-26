@@ -1,4 +1,6 @@
 "use server"
+//@ts-ignore
+process.noDeprecation = true;
 import bcrypt from "bcryptjs";
 import { v2 as cloudinary } from 'cloudinary';
 import { revalidatePath } from "next/cache";
@@ -99,8 +101,7 @@ const uploadImage = async (file) => {
       }
     ).end(buffer);
   });
-  // @ts-ignore
-  console.log(imageResult.secure_url);
+
   // @ts-ignore
   return imageResult.secure_url;
 
@@ -168,6 +169,8 @@ export const handlePostAds = async (formData) => {
     })
     await newProduct.save()
     console.log('product saved successfully')
+
+
 
     // console.log('All images uploaded successfully:', uploadResults);
     // return uploadResults; // Return an array of secure URLs for uploaded images
