@@ -1,5 +1,11 @@
+'use client'
+
+import { usePathname } from 'next/navigation'
+
 
 const TakiaBreadCrumb = () => {
+  const pathname = usePathname()
+
   return (
     <div className="flex  text-sm [&>*]:cursor-pointer capitalize text-gray-600 space-x-2">
       <p>Home </p>

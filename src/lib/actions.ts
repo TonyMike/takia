@@ -109,16 +109,14 @@ const uploadImage = async (file) => {
 export const handlePostAds = async (formData) => {
   await connectDb()
   initializeProductModel();
-
-  // Access the User model
+  initializeModels();
+  const User = getUserModel();
   const Product = getProductModel()
 
   const { category, title, description, price, condition, state, school, negotiable } = Object.fromEntries(formData);
   const session = await auth()
-  const email = session.user.email
   const genSlug = title.replaceAll(' ', '-')
-  const imageFiles = formData.getAll('files'); // Assuming 'files' is the name of the form field for multiple file uploads
-
+  const imageFiles = formData.getAll('files');
   // Map each image file to its corresponding upload promise
   const uploadPromises = imageFiles.map(async (file) => {
     const arrayBuffer = await file.arrayBuffer();
@@ -139,7 +137,7 @@ export const handlePostAds = async (formData) => {
   });
 
   try {
-    //@ts-ignore
+    // @ts-ignore
     const getUser: UserProps | null = await User.findById({ _id: session.user._id.toString() })
     const userId = getUser?._id.toString()
     const userInfo = {
@@ -147,6 +145,9 @@ export const handlePostAds = async (formData) => {
       whatsapp: getUser.whatsapp,
       profile_picture: getUser.profile_picture,
       businessName: getUser.businessName
+    }
+    if(!userId) {
+      throw new Error('User not found')
     }
     // Wait for all uploads to complete
     const uploadResults = await Promise.all(uploadPromises);
