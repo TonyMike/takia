@@ -36,7 +36,7 @@ const PostAdForm = () => {
     if (state.message) {
       if (state.message.includes('successfully')) {
         toast.success(state.message)
-        router.push(`/product/${state.productId}`)
+        // router.push(`/product/${state.productId}`)
         formRef.current.reset();
       } else {
         toast.error(state.message)
