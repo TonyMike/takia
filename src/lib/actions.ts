@@ -303,3 +303,18 @@ export const searchProduct = async ({ query }) => {
 
 
 }
+
+
+export const getAllProducts = async () => {
+  await connectDb();
+  initializeProductModel();
+  const Product = getProductModel()
+  try {
+      const products = await Product.find()
+      // console.log("🚀 ~ getAllProducts ~ products:", products)
+      return products
+    } catch (e) {
+      console.error('Error getting all products:', e);
+      return []
+    }
+}

@@ -9,6 +9,7 @@ export const categoriesOptions: string[] = [
   'Sport & outdoor',
   'Arts',
   'Furnitures',
+  'Catering & Baking',
   'Beauty',
   'Home Appliances',
   'vehicles',
@@ -17,7 +18,7 @@ export const categoriesOptions: string[] = [
 ];
 export const conditionOptions: string[] = ['New', 'Used'];
 
-export const categories:categoryProp[] = [
+export const categories: categoryProp[] = [
   {
     category: "phones & tablets",
     icon: '/icons/smartphone.png'
@@ -34,6 +35,7 @@ export const categories:categoryProp[] = [
     category: "Fashion",
     icon: '/icons/fashion.png'
   },
+
   {
     category: "Sport & outdoor",
     icon: '/icons/sport.png'
@@ -45,6 +47,10 @@ export const categories:categoryProp[] = [
   {
     category: "Furnitures",
     icon: '/icons/furnitures.png'
+  },
+  {
+    category: "Catering & Baking",
+    icon: '/icons/catering.png'
   },
   {
     category: 'beauty',
@@ -76,7 +82,7 @@ export const safetyTips = [
   "Verify all documents and only pay if you're satisfiedjdjdjjdjdjdjd d"
 ]
 
-export const getProduct = async (productId:{productId:Object}) => {
+export const getProduct = async (productId: { productId: Object }) => {
   try {
     const data = await fetch(`https://dummyjson.com/products/${productId}`)
       .then(response => response.json())

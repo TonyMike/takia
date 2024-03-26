@@ -96,7 +96,7 @@ const PostAdForm = () => {
 
         <div className="grid grid-cols-1 gap-y-6 md:grid-cols-2 md:gap-x-3">
           <PriceInput />
-          <Select label={'Condition'} name={'condition'} options={conditionOptions} />
+          <Select label={'Condition'} required name={'condition'} options={conditionOptions} />
         </div>
 
         <div className="grid grid-cols-1 gap-y-6 md:grid-cols-2 md:gap-x-3">

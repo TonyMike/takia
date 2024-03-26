@@ -1,13 +1,11 @@
 "use client"
-import React from 'react'
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import FormTitle from "./FormTitle";
 import ProductCard from "./ProductCard";
 
-const ProductsList = () => {
+const ProductsList = ({ dbproducts }) => {
   const [products, setProducts] = useState([])
-
+  console.log(dbproducts)
   useEffect(() => {
     const fetchProducts = async () => {
       try {
@@ -30,14 +28,14 @@ const ProductsList = () => {
       </div> */}
       <div className=" grid grid-cols-2 grow gap-4  sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4  ">
         {
-          products.map((x, i) => {
+          dbproducts.map((x, i) => {
 
             return (
-              <Link key={x.id} href={`/products/${x?.id}`} >
+              <Link key={i} href={`/products/${x?._id}`} >
                 <ProductCard
                   name={x?.title}
                   image={x?.images[0]}
-                  price="$19.99"
+                  price={x?.price}
                   imageCount={x.images.length}
                 />
               </Link>

@@ -5,9 +5,9 @@ import { ImLocation2 } from "react-icons/im";
 const ProductCard = ({ name, image, price, imageCount }) => {
   return (
     <div className="w-full  relative overflow-hidden rounded-lg  shadow-takia  ">
-        <div className="bg-black text-center text-xs text-white bg-opacity-60  absolute top-0 z-[1]  h-6 flex items-center justify-center w-7">{imageCount}</div>
+      <div className="bg-black text-center text-xs text-white bg-opacity-60  absolute top-0 z-[1]  h-6 flex items-center justify-center w-7">{imageCount}</div>
       <div className=" relative overflow-hidden  p-4 min-h-36">
-        <Image src={image} fill alt='image' objectFit="cover" className="object-center hover:scale-125 transition-transform duration-100 object-cover" />
+        <Image src={image} fill alt='image' className=" hover:scale-125 transition-transform duration-100 object-cover" />
       </div>
       <div className="p-3 space-y-0.5 ">
         <p className="text-ellipsis text-gray-700 w-full text-sm overflow-hidden whitespace-nowrap block text-nowrap">{name}</p>
