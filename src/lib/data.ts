@@ -19,7 +19,7 @@ export const conditionOptions: string[] = ['New', 'Used'];
 
 export const categories:categoryProp[] = [
   {
-    category: "phoness & tablets",
+    category: "phones & tablets",
     icon: '/icons/smartphone.png'
   },
   {

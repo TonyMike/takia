@@ -7,6 +7,7 @@ import Search from "./Search";
 
 const MdSearch = () => {
   const [open, setOpen] = useState(false);
+
   return (
     <div className="md:hidden ">
       <div className="rounded-full cursor-pointer border border-gray-200 size-10 flex items-center justify-center " onClick={() => setOpen(true)}>
