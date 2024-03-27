@@ -16,7 +16,7 @@ const SearchProduct = async ({ searchParams }) => {
         {
           !products ? <div>
             No results found for your search.
-          </div> : <ProductsList />
+          </div> : <ProductsList dbproducts={[]} />
         }
 
       </div>
