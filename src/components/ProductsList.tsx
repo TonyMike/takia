@@ -3,7 +3,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import ProductCard from "./ProductCard";
 
-const ProductsList = ({ dbproducts }) => {
+const ProductsList = ({ dbproducts }: { dbproducts: any }) => {
   const [products, setProducts] = useState([])
   console.log(dbproducts)
   useEffect(() => {
